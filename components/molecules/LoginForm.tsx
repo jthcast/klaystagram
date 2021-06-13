@@ -4,10 +4,8 @@ import { isValidPrivateKey } from '../../utils/crypto'
 import { login } from '../../redux/modules/auth'
 import Input from '../atoms/Input'
 import Button from '../atoms/Button'
-import { useRouter } from 'next/dist/client/router'
 
 export default function LoginForm() {
-  const router = useRouter()
   const dispatch = useDispatch()
   const [privateKey, setPrivateKey] = useState(``)
   const [warningMessage, setWarningMessage] = useState(``)
@@ -19,7 +17,6 @@ export default function LoginForm() {
   function loginHandling(){
     if(isValidPrivateKey(privateKey)){
       dispatch(login(privateKey))
-      router.push(`/Feeds`);
     }else{
       setWarningMessage(`* Invalid Private Key`)
     }
