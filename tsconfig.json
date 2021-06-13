@@ -64,6 +64,6 @@
     "noEmit": true,
     "isolatedModules": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js", "truffle-config.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js", "truffle-config.js", "klaytn/caver.js", "klaytn/KlaystagramContract.js"],
   "exclude": ["node_modules"]
 }
