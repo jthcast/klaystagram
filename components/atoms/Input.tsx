@@ -6,10 +6,12 @@ interface IInput extends InputHTMLAttributes<HTMLElement>{
   className?: string
   isDisabled?: boolean
   label?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
   onEnter?: (event: React.KeyboardEvent<HTMLElement>) => void
   placeholder?: string
-  isReadOnly?: boolean,
+  isReadOnly?: boolean
+  isRequire?: boolean
   type?: `text` | `password`
   value?: string
 }
@@ -24,6 +26,7 @@ export default function Input({
   onEnter,
   placeholder,
   isReadOnly = false,
+  isRequire = false,
   type = `text`,
   value
 }: IInput) {
@@ -44,13 +47,13 @@ export default function Input({
         disabled={isDisabled}
         placeholder={placeholder}
         readOnly={isReadOnly}
+        required={isRequire}
         type={type}
         value={value}
         onChange={onChange}
         onClick={onClick}
         onKeyUp={onEnterHandling}
-      >
-      </input>
+      />
     </label>
   )
 }
