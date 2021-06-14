@@ -14,7 +14,7 @@ export default function PhotoHeader({
   return (
     <header>
       <LinkNewTab
-        link={`${KLAYTN_SCOPE}transactions?account=${currentOwner}`}
+        link={`${KLAYTN_SCOPE}account/${currentOwner}`}
         title={currentOwner}
       />
       <p>
