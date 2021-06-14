@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/modules'
-import { hideModal } from '../../redux/modules/ui'
 import ui from '../../utils/ui'
 import Toast from '../molecules/Toast'
+import Header from '../molecules/Header'
 import Modal from './Modal'
+import Footer from '../molecules/Footer'
 
 export default function Layout({ children }) {
-  const dispatch = useDispatch()
   const { isOpen = false, content } = useSelector((state: RootState) => state.ui.modal) || {}
   const toast = useSelector((state: RootState) => state.ui.toast)
 
@@ -16,7 +16,9 @@ export default function Layout({ children }) {
 
   return (
     <>
+      <Header />
       <main>{children}</main>
+      <Footer />
       <Modal
         isOpen={isOpen}
         openHandler={modalHandling}
