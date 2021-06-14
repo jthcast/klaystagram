@@ -1,8 +1,7 @@
 import { cx } from '@emotion/css'
-import { ReactElement } from 'react'
 
 interface ITooltip {
-  children?: string | ReactElement
+  children?: string | React.ReactElement
   className?: string
   title?: string
 }
