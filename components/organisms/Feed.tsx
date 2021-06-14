@@ -8,7 +8,10 @@ import { drawImageFromBytes } from '../../utils/imageUtils'
 import PhotoHeader from '../molecules/PhotoHeader'
 import PhotoInfo from '../atoms/PhotoInfo'
 import CopyrightInfo from '../molecules/CopyrightInfo'
-import TransferOwnershipButton from '../molecules/TransferOwnershipButton'
+// import TransferOwnershipButton from '../molecules/TransferOwnershipButton'
+import Button from '../atoms/Button'
+import UploadPhotoForm from '../molecules/UploadPhotoForm'
+import ui from '../../utils/ui'
 
 export default function Feed() {
   const dispatch = useDispatch()
@@ -22,6 +25,13 @@ export default function Feed() {
   //     return { isLoading: false }
   //   }
   // }
+
+  function uploadHandling(){
+    ui.showModal({
+      isOpen: true,
+      content: <UploadPhotoForm />
+    })
+  }
 
   useEffect(() => {
     if(!feed){
@@ -84,6 +94,11 @@ export default function Feed() {
         : <span>No Photo 😅</span>
       }
       </ul>
+      <Button
+        onClick={uploadHandling}
+      >
+        Upload photo
+      </Button>
     </div>
   )
 }
