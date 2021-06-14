@@ -1,6 +1,6 @@
 import caver from '../klaytn/caver'
 
-export const isValidAddress = (address: string) => caver.utils.isaddress(address)
+export const isValidAddress = (address: string) => caver.utils.isAddress(address)
 
 export const isValidPrivateKey = (privateKey: string) => {
   const washedPrivateKey = privateKey.slice(0, 2) === `0x`

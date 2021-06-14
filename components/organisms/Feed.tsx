@@ -8,7 +8,7 @@ import { drawImageFromBytes } from '../../utils/imageUtils'
 import PhotoHeader from '../molecules/PhotoHeader'
 import PhotoInfo from '../atoms/PhotoInfo'
 import CopyrightInfo from '../molecules/CopyrightInfo'
-// import TransferOwnershipButton from '../molecules/TransferOwnershipButton'
+import TransferOwnershipButton from '../molecules/TransferOwnershipButton'
 import Button from '../atoms/Button'
 import UploadPhotoForm from '../molecules/UploadPhotoForm'
 import ui from '../../utils/ui'
@@ -18,13 +18,6 @@ export default function Feed() {
   const feed = useSelector((state: RootState) => state.photos.feed)
   const userAddress = useSelector((state: RootState) => state.auth.address)
   const [isLoading, setLoading] = useState(false)
-
-  // function getDerivedStateFromProps(nextProps, prevState){ // TODO Q
-  //   const isUpdatedFeed = (nextProps.feed !== null) && (nextProps.feed !== prevState.feed)
-  //   if(isUpdatedFeed){
-  //     return { isLoading: false }
-  //   }
-  // }
 
   function uploadHandling(){
     ui.showModal({
@@ -53,7 +46,7 @@ export default function Feed() {
             timestamp
           }) => {
             const originalOwner = ownerHistory[0]
-            const currentOwner = last(ownerHistory)
+            const currentOwner = last(ownerHistory).toLowerCase()
             const imageUrl = drawImageFromBytes(data)
             const issueDate = formatDistanceToNow(new Date(timestamp * 1000))
 
@@ -78,14 +71,14 @@ export default function Feed() {
                       originalOwner={originalOwner}
                       currentOwner={currentOwner}
                     />
-                    {/* { userAddress === currentOwner && (
+                    { userAddress === currentOwner && (
                       <TransferOwnershipButton
                         // className
                         id={id}
                         issueDate={issueDate}
                         currentOwner={currentOwner}
                       />
-                    )} */}
+                    )}
                   </div>
                 </article>
               </li>

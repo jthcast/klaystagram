@@ -3,22 +3,41 @@ import { getWallet } from '../../utils/crypto'
 import { feedParser } from '../../utils/misc'
 import ui from '../../utils/ui'
 
-export interface IFeed {
-  id?: number
-  ownerHistory?: string
+export interface IPhoto {
+  id?: string
+  ownerHistory?: string[]
   data?: string
   name?: string
   location?: string
   caption?: string
-  timestamp?: number
+  timestamp?: string
 }
 
 export const SET_FEED = `photos/SET_FEED`
 
-const setFeed = (feed: IFeed[] | IFeed) => ({
+const setFeed = (feed: IPhoto[] | IPhoto) => ({
   type: SET_FEED,
   payload: { feed }
 })
+
+const updateFeed = (tokenId: string) => async (dispatch, getState) => {
+  const newPhoto = await KlaystagramContract.methods.getPhoto(tokenId).call()
+  const { photos: { feed } } = getState()
+  const newFeed: IPhoto[] = [feedParser(newPhoto), ...feed]
+  dispatch(setFeed(newFeed))
+}
+
+const updateOwnerAddress = (tokenId: string, to: string) => (dispatch, getState) => {
+  const { photos: { feed } } = getState()
+  const newFeed = feed.map((photo: IPhoto) => {
+    if(photo.id !== tokenId){
+      return photo
+    }
+    photo.ownerHistory = [...photo.ownerHistory, to]
+    return photo
+  })
+  dispatch(setFeed(newFeed))
+}
 
 export const getFeed = () => async (dispatch) => {
   const totalPhotoCount = await KlaystagramContract.methods.getTotalPhotoCount().call()
@@ -34,13 +53,6 @@ export const getFeed = () => async (dispatch) => {
   const response = await Promise.all(feed)
 
   dispatch(setFeed(feedParser(response)))
-}
-
-export const updateFeed = (tokenId) => async (dispatch, getState) => {
-  const newPhoto = await KlaystagramContract.methods.getPhoto(tokenId).call()
-  const { photos: { feed } } = getState()
-  const newFeed: IFeed[] = [feedParser(newPhoto), ...feed]
-  dispatch(setFeed(newFeed))
 }
 
 export const uploadPhoto = (
@@ -82,6 +94,32 @@ export const uploadPhoto = (
       })
     }
   }
+}
+
+export const transferOwnership = (tokenId: string, to: string) => async (dispatch) => {
+  ui.showToast({
+    status: `pending`,
+    message: `Sending a transaction... (transferOwnership)`,
+  })
+  try{
+    const receipt = await KlaystagramContract.methods.transferOwnership(tokenId, to).send({
+      from: getWallet().address,
+      gas: `10000000`
+    })
+    ui.showToast({
+      status: receipt.status ? `success` : `fail`,
+      message: `Received receipt! It means your transaction is in Klaytn
+      block (#${receipt.blockNumber}) (transferOwnership)`,
+      link: receipt.transactionHash
+    })
+    dispatch(updateOwnerAddress(tokenId, to))
+  }catch(error){
+    ui.showToast({
+      status: `error`,
+      message: error.toString()
+    })
+  }
+  
 }
 
 const initialState = {
