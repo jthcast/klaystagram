@@ -3,7 +3,7 @@ import LoginForm from '../molecules/LoginForm'
 import SignupForm from '../molecules/SignupForm'
 
 export default function Auth() {
-  const [isLoginForm, setLoginForm] = useState(false)
+  const [isLoginForm, setLoginForm] = useState(true)
 
   function toggleForm(){
     setLoginForm(!isLoginForm)
