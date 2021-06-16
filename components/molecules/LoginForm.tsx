@@ -6,6 +6,7 @@ import Input from '../atoms/Input'
 import Button from '../atoms/Button'
 import { css } from '@emotion/css'
 import globalCss from '../../styles/global-css'
+import ui from '../../utils/ui'
 
 export default function LoginForm() {
   const dispatch = useDispatch()
@@ -21,6 +22,7 @@ export default function LoginForm() {
 
     if(isValidPrivateKey(privateKey)){
       dispatch(login(privateKey))
+      ui.hideModal()
     }else{
       setWarningMessage(`* Invalid Private Key`)
     }
