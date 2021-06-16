@@ -33,7 +33,7 @@ export default function Photo({
         src={src}
         alt={name}
       />
-      <div>
+      <div className={cssInfoContainer}>
         <PhotoHeader
           currentOwner={currentOwner}
           location={location}
@@ -72,4 +72,9 @@ const cssContainer = css`
 
 const cssImage = css`
   width: 100%;
+`
+
+const cssInfoContainer = css`
+  display: flex;
+  flex-direction: column;
 `
