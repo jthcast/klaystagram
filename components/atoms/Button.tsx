@@ -72,6 +72,10 @@ const cssButton = css`
   color: ${globalCss.color.white};
   padding: 0.25rem 0.75rem;
   border-radius: 0.25rem;
+
+  svg{
+    margin: 0.125rem 0.4rem 0 0;
+  }
 `;
 
 const cssDanger = css`
