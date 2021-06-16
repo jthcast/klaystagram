@@ -10,6 +10,7 @@ import { css } from '@emotion/css'
 import globalCss from '../../styles/global-css'
 import LoginForm from '../molecules/LoginForm'
 import SignupForm from '../molecules/SignupForm'
+import UploadPhotoForm from '../molecules/UploadPhotoForm'
 import Logo from '../atoms/Logo'
 
 export default function Header() {
@@ -53,6 +54,13 @@ export default function Header() {
     })
   }
 
+  function uploadHandling(){
+    ui.showModal({
+      isOpen: true,
+      content: <UploadPhotoForm />
+    })
+  }
+
   return (
     <header className={cssHeader}>
       <div className={cssContainer}>
@@ -61,18 +69,6 @@ export default function Header() {
         </div>
         <nav className={cssMenus}>
           <ul>
-            {isLoggedIn && (
-              <li>
-                <Button
-                  onClick={showWalletModal}
-                >
-                  <>
-                    <Icon iconName='wallet' />
-                    Wallet
-                  </>
-                </Button>
-              </li>
-            )}
             {!isLoggedIn && (
               <li>
                 <Button
@@ -82,6 +78,32 @@ export default function Header() {
                   Login
                 </Button>
               </li>
+            )}
+            {isLoggedIn && (
+              <>
+                <li>
+                  <Button
+                    onClick={showWalletModal}
+                    title='Wallet'
+                  >
+                    <>
+                      <Icon iconName='wallet' />
+                      Wallet
+                    </>
+                  </Button>
+                </li>
+                <li>
+                  <Button
+                    onClick={uploadHandling}
+                    title='Upload photo'
+                  >
+                    <>
+                      <Icon iconName='upload' />
+                      Upload photo
+                    </>
+                  </Button>
+                </li>
+              </>
             )}
             <li>
               <Button
