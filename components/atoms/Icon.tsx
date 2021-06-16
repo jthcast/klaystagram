@@ -29,6 +29,23 @@ interface IconDetailProps {
 }
 
 const icons: IconDetailProps = {
+  klaytnLogo: {
+    viewBox: `0 0 40.1 39.6`,
+    paths: [
+      {
+        d: `M21 19.7l13.7 13.6a19.826 19.826 0 000-27.2z`
+      },
+      {
+        d: `M20 20.6L6.5 34 20 39.6 33.5 34z`
+      },
+      {
+        d: `M19.5 19.2l14-13.9L20.6 0 7.8 30.9z`
+      },
+      {
+        d: `M0 19.7a19.731 19.731 0 005.4 13.6L18.8 1z`
+      }
+    ]
+  },
   angleDown: {
     viewBox: '0 0 320 512',
     paths: [
