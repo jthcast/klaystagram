@@ -17,7 +17,7 @@ export default function LoginForm() {
   }
 
   function loginHandling(event: React.FormEvent<HTMLFormElement>){
-    event.preventDefault();
+    event.preventDefault()
 
     if(isValidPrivateKey(privateKey)){
       dispatch(login(privateKey))
