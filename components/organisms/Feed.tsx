@@ -1,28 +1,24 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux/modules'
 import { getFeed } from '../../redux/modules/photos'
-import { last } from '../../utils/misc'
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import { drawImageFromBytes } from '../../utils/imageUtils'
-import PhotoHeader from '../molecules/PhotoHeader'
-import PhotoInfo from '../atoms/PhotoInfo'
-import CopyrightInfo from '../molecules/CopyrightInfo'
-import TransferOwnershipButton from '../molecules/TransferOwnershipButton'
-import Button from '../atoms/Button'
-import UploadPhotoForm from '../molecules/UploadPhotoForm'
 import ui from '../../utils/ui'
+import { css } from '@emotion/css'
+import globalCss from '../../styles/global-css'
+import Icon from '../atoms/Icon'
+import Photo from './Photo'
+import { drawImageFromBytes } from '../../utils/imageUtils'
 
 export default function Feed() {
   const dispatch = useDispatch()
+  const isLoading = useSelector((state: RootState) => state.loading.isLoading)
   const feed = useSelector((state: RootState) => state.photos.feed)
-  const userAddress = useSelector((state: RootState) => state.auth.address)
-  const [isLoading, setLoading] = useState(false)
 
-  function uploadHandling(){
+  function showDetailModal(event: React.MouseEvent<HTMLImageElement>){
+    const { id, src } = event.currentTarget.dataset
+
     ui.showModal({
-      isOpen: true,
-      content: <UploadPhotoForm />
+      content: <Photo id={id} src={src} />
     })
   }
 
@@ -33,65 +29,61 @@ export default function Feed() {
   }, [dispatch])
 
   return (
-    <div>
-      <ul>
-      {feed?.length
-        ? feed.map(({
+    <div className={cssContainer}>
+      {isLoading && <Icon iconName='spinner' spin />}
+      {!isLoading && feed && !feed.length && (
+        <span>No Photo yet. How about uploading it? 😅</span>
+      )}
+      {feed?.length &&
+        <ul className={cssList} >
+          {feed.map(({
             id,
-            ownerHistory,
-            data,
             name,
-            location,
-            caption,
-            timestamp
+            data
           }) => {
-            const originalOwner = ownerHistory[0]
-            const currentOwner = last(ownerHistory).toLowerCase()
             const imageUrl = drawImageFromBytes(data)
-            const issueDate = formatDistanceToNow(new Date(timestamp * 1000))
 
             return(
               <li key={id}>
-                <article>
-                  <PhotoHeader
-                    currentOwner={currentOwner}
-                    location={location}
+                <article className={cssPost}>
+                  <img 
+                    src={imageUrl}
+                    alt={name}
+                    onClick={showDetailModal}
+                    data-id={id}
+                    data-src={imageUrl}
                   />
-                  <div>
-                    <img src={imageUrl} alt={name} />
-                  </div>
-                  <div>
-                    <PhotoInfo
-                      name={name}
-                      issueDate={issueDate}
-                      caption={caption}
-                    />
-                    <CopyrightInfo
-                      id={id}
-                      originalOwner={originalOwner}
-                      currentOwner={currentOwner}
-                    />
-                    { userAddress === currentOwner && (
-                      <TransferOwnershipButton
-                        // className
-                        id={id}
-                        issueDate={issueDate}
-                        currentOwner={currentOwner}
-                      />
-                    )}
-                  </div>
                 </article>
               </li>
             )
-          })
-        : <span>No Photo 😅</span>
+          })}
+        </ul>
       }
-      </ul>
-      <Button
-        onClick={uploadHandling}
-      >
-        Upload photo
-      </Button>
     </div>
   )
 }
+
+const cssContainer = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const cssList = css`
+  list-style: none;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+`
+
+const cssPost = css`
+  width: ${globalCss.common.maxWidthImage};
+  height: ${globalCss.common.maxWidthImage};
+
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`
