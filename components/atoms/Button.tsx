@@ -64,6 +64,7 @@ export default Button;
 
 const cssButton = css`
   display: flex;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
   background-color: ${globalCss.color.secondaryBrandColor};
