@@ -123,7 +123,7 @@ const cssHeader = css`
   top: 0;
   width: 100%;
   background-color: ${globalCss.color.white};
-  border-bottom: 0.1rem solid ${globalCss.color.borderColor};
+  border-bottom: 1px solid ${globalCss.color.borderColor};
 `
   
 const cssContainer = css`

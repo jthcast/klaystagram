@@ -91,7 +91,7 @@ const cssDisabled = css`
 const cssGhost = css`
   color: ${globalCss.color.color};
   background-color: transparent;
-  border: 0.1rem solid ${globalCss.color.borderColor};
+  border: 1px solid ${globalCss.color.borderColor};
 `;
 
 const cssSpinner = css`

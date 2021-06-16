@@ -24,7 +24,7 @@ export default function KlaytnContainer({ children }) {
 }
 
 const cssKlaytnContainer = css`
-  border: 0.1rem solid ${globalCss.color.borderColor};
+  border: 1px solid ${globalCss.color.borderColor};
   background-color: ${globalCss.color.backgroundColor};
   padding: 2rem 3rem;
   margin: auto;

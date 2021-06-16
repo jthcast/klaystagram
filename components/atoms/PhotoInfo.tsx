@@ -24,9 +24,8 @@ export default function PhotoInfo({
 
 const cssContainer = css`
   padding: 1rem;
-  background-color: ${globalCss.color.backgroundColor};
-  border-left: 0.1rem solid ${globalCss.color.borderColor};
-  border-bottom: 0.1rem solid ${globalCss.color.borderColor};
+  border-left: 1px solid ${globalCss.color.borderColor};
+  border-bottom: 1px solid ${globalCss.color.borderColor};
   height: 100%;
 `
 

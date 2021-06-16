@@ -93,7 +93,7 @@ const cssLabelSpan = css`
 const cssInput = css`
   background-color: transparent;
   color: ${globalCss.color.color};
-  border: 0.1rem solid ${globalCss.color.borderColor};
+  border: 1px solid ${globalCss.color.borderColor};
   border-radius: 0.25rem;
   width: 100%;
   padding: 0.5rem;
