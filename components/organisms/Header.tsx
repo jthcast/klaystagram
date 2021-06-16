@@ -19,7 +19,6 @@ export default function Header() {
 
   function showLoginModal(){
     ui.showModal({
-      isOpen: true,
       content: (
         <KlaytnContainer>
           <LoginForm />
@@ -34,7 +33,6 @@ export default function Header() {
       return
     }
     ui.showModal({
-      isOpen: true,
       content: (
         <KlaytnContainer>
           <SignupForm />
@@ -45,7 +43,6 @@ export default function Header() {
 
   function showWalletModal(){
     ui.showModal({
-      isOpen: true,
       content: (
         <KlaytnContainer>
           <WalletInfo />
@@ -56,7 +53,6 @@ export default function Header() {
 
   function uploadHandling(){
     ui.showModal({
-      isOpen: true,
       content: <UploadPhotoForm />
     })
   }

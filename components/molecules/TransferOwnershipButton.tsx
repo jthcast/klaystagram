@@ -19,7 +19,6 @@ export default function TransferOwnershipButton({
 }: ITransferOwnershipButton) {
   function showModalHandling(){
     ui.showModal({
-      isOpen: true,
       content: (
         <TransferOwnership
           id={id}
