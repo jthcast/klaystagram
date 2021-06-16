@@ -2,6 +2,7 @@ import { css } from '@emotion/css'
 import { formatDistanceToNow } from 'date-fns'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/modules'
+import globalCss from '../../styles/global-css'
 import { last } from '../../utils/misc'
 import PhotoInfo from '../atoms/PhotoInfo'
 import CopyrightInfo from '../molecules/CopyrightInfo'
@@ -61,11 +62,11 @@ export default function Photo({
 
 const cssContainer = css`
   width: 100%;
-  height: 100%;
   max-width: 70vw;
   max-height: 85vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  border: 0.1rem solid ${globalCss.color.borderColor};
   margin: auto;
 `
 
