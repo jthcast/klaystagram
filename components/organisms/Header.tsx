@@ -45,7 +45,11 @@ export default function Header() {
   function showWalletModal(){
     ui.showModal({
       isOpen: true,
-      content: <WalletInfo />
+      content: (
+        <KlaytnContainer>
+          <WalletInfo />
+        </KlaytnContainer>
+      )
     })
   }
 
@@ -63,7 +67,7 @@ export default function Header() {
                   onClick={showWalletModal}
                 >
                   <>
-                    <Icon iconName='search' />
+                    <Icon iconName='wallet' />
                     Wallet
                   </>
                 </Button>
