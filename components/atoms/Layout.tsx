@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/modules'
 import ui from '../../utils/ui'
 import Toast from '../molecules/Toast'
-import Header from '../molecules/Header'
+import Header from '../organisms/Header'
 import Modal from './Modal'
 import Footer from '../molecules/Footer'
 

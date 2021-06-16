@@ -1,7 +1,7 @@
 const breakPointMobile = `17.5rem`;
 const breakPointTablet = `40.875rem`;
 const breakPointDesktop = `64rem`;
-const fontSize = `18px`;
+const fontSize = `16px`;
 
 function getFontPercent() {
   return (parseInt(fontSize) / 16) * 100 + '%';
@@ -20,8 +20,8 @@ const globalCss = {
     desktop: breakPointDesktop,
   },
   common: {
-    maxWidth: `66.667rem`,
-    maxWidthHeader: `100%`, // TODO
+    maxWidth: `60.938rem`,
+    maxWidthHeader: `100%`,
     fontBold: `600`,
     fontNormal: `400`,
     borderRadius: `0.5rem`,
