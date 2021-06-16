@@ -24,7 +24,7 @@ export default function CopyrightInfo({
   }
 
   return (
-    <div>
+    <>
       <Button
         className={cssCopyrightInfoButton}
         title='Copyright Info'
@@ -55,7 +55,7 @@ export default function CopyrightInfo({
           </>
         </Tooltip>
       )}
-    </div>
+    </>
   )
 }
 
