@@ -1,3 +1,4 @@
+import { css } from '@emotion/css'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { KLAY_FAUCET } from '../../constants/url'
@@ -25,7 +26,7 @@ export default function WalletInfo() {
   }, [])
 
   return (
-    <div>
+    <div className={cssContainer}>
       <Input
         isReadOnly
         label='Wallet Address'
@@ -36,8 +37,9 @@ export default function WalletInfo() {
         label='Balance'
         value={`${balance} KLAY`}
       />
-      <p>
-        If you need small amount of Klay for testing.
+      <p className={cssMessage}>
+        If you need small amount of Klay for testing?
+        <br />
         <LinkNewTab
           link={KLAY_FAUCET}
           title='Run Klay Faucet'
@@ -46,3 +48,14 @@ export default function WalletInfo() {
     </div>
   )
 }
+
+const cssContainer = css`
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+`
+
+const cssMessage = css`
+  font-size: 0.8rem;
+  text-align: center;
+`
