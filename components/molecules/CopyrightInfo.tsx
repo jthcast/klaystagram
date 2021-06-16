@@ -1,3 +1,4 @@
+import { css } from '@emotion/css'
 import { useState } from 'react'
 import { KLAYTN_SCOPE } from '../../constants/url'
 import Button from '../atoms/Button'
@@ -24,8 +25,13 @@ export default function CopyrightInfo({
 
   return (
     <div>
-      <Button onClick={toogleShowInfo}>
-        <Icon iconName='search' />
+      <Button
+        className={cssCopyrightInfoButton}
+        title='Copyright Info'
+        onClick={toogleShowInfo}
+        ghost={true}
+      >
+        <Icon iconName='copyright' />
       </Button>
       {isShowInfo && (
         <Tooltip
@@ -52,3 +58,9 @@ export default function CopyrightInfo({
     </div>
   )
 }
+
+const cssCopyrightInfoButton = css`
+  border: 0;
+  padding: 0;
+  font-size: 1.5rem;
+`
