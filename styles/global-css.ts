@@ -31,6 +31,7 @@ const globalCss = {
   },
   color: {
     backgroundColor: `var(--background-base)`,
+    backgroundColorDown: `var(--background-down)`,
     backgroundColorOpacity: `var(--background-base-opacity)`,
     backgroundColorDownOpacity: `var(--background-down-opacity)`,
     borderColor: `var(--border-base)`,

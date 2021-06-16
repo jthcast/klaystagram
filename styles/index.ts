@@ -32,12 +32,13 @@ body {
   overflow-y: overlay;
   height: 100%;
   width: 100%;
-  background-color: ${globalCss.color.backgroundColor};
+  background-color: ${globalCss.color.backgroundColorDown};
 }
 
 :root {
-  --background-base: #fafafa;
+  --background-base: #ffffff;
   --background-base-opacity: rgba(255, 255, 255, 0.85);
+  --background-down: #fafafa;
   --background-down-opacity: rgba(255, 255, 255, 0.2);
   --scrollbar-base-opacity: rgba(0, 0, 0, 0.5);
   --background-code-base: #f9f2f4;
