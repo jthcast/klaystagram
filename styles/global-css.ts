@@ -22,6 +22,7 @@ const globalCss = {
   common: {
     maxWidth: `60.938rem`,
     maxWidthHeader: `100%`,
+    maxWidthImage: `18.313rem`,
     fontBold: `600`,
     fontNormal: `400`,
     borderRadius: `0.5rem`,
