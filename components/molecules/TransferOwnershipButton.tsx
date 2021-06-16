@@ -1,18 +1,16 @@
-import { cx } from '@emotion/css'
+import { css, cx } from '@emotion/css'
 import ui from '../../utils/ui'
 import Button from '../atoms/Button'
 import Icon from '../atoms/Icon'
 import TransferOwnership from './TransferOwnership'
 
 interface ITransferOwnershipButton {
-  className?: string
   currentOwner?: string
   id?: string
   issueDate?: string
 }
 
 export default function TransferOwnershipButton({
-  className,
   currentOwner,
   id,
   issueDate,
@@ -31,13 +29,18 @@ export default function TransferOwnershipButton({
 
   return (
     <Button
-      className={cx(
-        // { [cssButton]: true },
-        { [className]: className ? true : false }
-      )}
+      className={cssExchangeButton}
+      title='Transfer Ownership'
       onClick={showModalHandling}
+      ghost={true}
     >
-      <Icon iconName='play' />
+      <Icon iconName='exchange' />
     </Button>
   )
 }
+
+const cssExchangeButton = css`
+  border: 0;
+  padding: 0;
+  font-size: 1.5rem;
+`
