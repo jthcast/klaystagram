@@ -80,17 +80,17 @@ body {
   color: var(--color-base);
 }
 
-@media (hover: hover) and (pointer: fine) { /*notTouchDevice*/
-  * {
-    &::-webkit-scrollbar {
-      width: 0.5rem;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--scrollbar-base-opacity);
-    }
-    &::-webkit-scrollbar-track {
-      background-color: rgba(0, 0, 0, 0);
-    }
-  }
-}
+// @media (hover: hover) and (pointer: fine) { /*notTouchDevice*/
+//   * {
+//     &::-webkit-scrollbar {
+//       width: 0.5rem;
+//     }
+//     &::-webkit-scrollbar-thumb {
+//       background-color: var(--scrollbar-base-opacity);
+//     }
+//     &::-webkit-scrollbar-track {
+//       background-color: rgba(0, 0, 0, 0);
+//     }
+//   }
+// }
 `;
