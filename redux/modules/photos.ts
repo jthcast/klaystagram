@@ -2,6 +2,7 @@ import KlaystagramContract from '../../klaytn/KlaystagramContract'
 import { getWallet } from '../../utils/crypto'
 import { feedParser } from '../../utils/misc'
 import ui from '../../utils/ui'
+import { endLoading, startLoading } from './loading'
 
 export interface IPhoto {
   id?: string
@@ -40,6 +41,7 @@ const updateOwnerAddress = (tokenId: string, to: string) => (dispatch, getState)
 }
 
 export const getFeed = () => async (dispatch) => {
+  dispatch(startLoading())
   const totalPhotoCount = await KlaystagramContract.methods.getTotalPhotoCount().call()
   if(!totalPhotoCount){
     return []
@@ -53,6 +55,7 @@ export const getFeed = () => async (dispatch) => {
   const response = await Promise.all(feed)
 
   dispatch(setFeed(feedParser(response)))
+  dispatch(endLoading())
 }
 
 export const uploadPhoto = (
