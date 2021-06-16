@@ -14,9 +14,11 @@ export default function KlaytnContainer({ children }) {
           Klaytn-based NFT photo licensing application
         </h2>
       </div>
-      <div className={cssContainer}>
-        {children}
-      </div>
+      {children && (
+        <div className={cssChildrenContainer}>
+          {children}
+        </div>
+      )}
     </div>
   )
 }
@@ -43,4 +45,10 @@ const cssLogo = css`
 
 const cssSubtitle = css`
   font-size: 1.25rem;
+`
+
+const cssChildrenContainer = css`
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 `
