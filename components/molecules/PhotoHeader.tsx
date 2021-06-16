@@ -30,15 +30,23 @@ export default function PhotoHeader({
 const cssContainer = css`
   border-left: 1px solid ${globalCss.color.borderColor};
   border-bottom: 1px solid ${globalCss.color.borderColor};
-  overflow-wrap: anywhere;
   padding: 1rem;
 `
 
 const cssCurrentOwner = css`
   font-weight: bold;
   text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
 `
 
 const cssLoation = css`
   font-size: 0.75rem;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
 `

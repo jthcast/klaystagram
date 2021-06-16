@@ -27,6 +27,7 @@ const cssContainer = css`
   border-left: 1px solid ${globalCss.color.borderColor};
   border-bottom: 1px solid ${globalCss.color.borderColor};
   height: 100%;
+  overflow: auto;
 `
 
 const cssFileName = css`

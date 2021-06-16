@@ -79,12 +79,13 @@ const cssContainer = css`
 
 const cssImage = css`
   width: 100%;
-  max-width: 45vw;
+  max-width: 41.5vw;
 `
 
 const cssInfoContainer = css`
   display: flex;
   flex-direction: column;
+  width: 20.938rem;
 `
 
 const cssButtonsContainer = css`
