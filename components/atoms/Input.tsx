@@ -1,5 +1,6 @@
-import { cx } from '@emotion/css'
+import { css, cx } from '@emotion/css'
 import { InputHTMLAttributes } from 'react'
+import globalCss from '../../styles/global-css'
 
 interface IInput extends InputHTMLAttributes<HTMLElement>{
   autoFocus?: boolean
@@ -38,11 +39,18 @@ export default function Input({
 
   return (
     <label className={cx(
-      // { [cssButton]: true },
-      { [className]: className ? true : false }
+      { [cssLabel]: true },
+      { [cssLabelDisabled]: isDisabled },
+      { [className]: !!className }
     )}>
-      {label}
+      <span className={cssLabelSpan}>
+        {label}
+      </span>
       <input
+        className={cx(
+          { [cssInput]: true },
+          { [cssLabelText]: !!label }
+        )}
         autoFocus={autoFocus}
         disabled={isDisabled}
         placeholder={placeholder}
@@ -57,3 +65,49 @@ export default function Input({
     </label>
   )
 }
+
+const cssLabel = css`
+  position: relative;
+  
+  &:focus-within{
+    color: ${globalCss.color.secondaryBrandColor};
+  }
+`
+
+const cssLabelDisabled = css`
+  opacity: 0.5;
+  color: ${globalCss.color.colorDown};
+`
+
+const cssLabelText = css`
+  padding: 2.4rem 1rem 0.8rem 1rem;
+`
+
+const cssLabelSpan = css`
+  position: absolute;
+  font-size: 0.8rem;
+  margin: 0.8rem 1.1rem;
+  pointer-events: none;
+`
+
+const cssInput = css`
+  background-color: transparent;
+  color: ${globalCss.color.color};
+  border: 0.1rem solid ${globalCss.color.borderColor};
+  border-radius: 0.25rem;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+
+  &:disabled{
+    cursor: not-allowed;
+  }
+
+  &:focus{
+    outline-color: ${globalCss.color.secondaryBrandColor};
+  }
+
+  &::placeholder{
+    color: ${globalCss.color.borderColor};
+  }
+`
