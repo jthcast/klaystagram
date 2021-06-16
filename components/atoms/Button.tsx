@@ -43,7 +43,7 @@ const Button = forwardRef(({
         { [cssDanger]: danger },
         { [cssDisabled]: loading || disabled },
         { [cssGhost]: ghost },
-        { [className]: className ? true : false }
+        { [className]: !!className }
       )}
       disabled={loading || disabled || false}
       onClick={onClick}
