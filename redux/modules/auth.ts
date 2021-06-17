@@ -7,9 +7,7 @@ const LOGOUT = `auth/LOGOUT`
 
 export const integrateWallet = (privateKey: string) => (dispatch) => {
   const walletInstance = caver.klay.accounts.privateKeyToAccount(privateKey)
-
   caver.klay.accounts.wallet.add(walletInstance)
-  sessionStorage.setItem(`walletInstance`, JSON.stringify(walletInstance))
 
   return dispatch({
     type: INTEGRATE_WALLET,
@@ -22,7 +20,6 @@ export const integrateWallet = (privateKey: string) => (dispatch) => {
 
 export const removeWallet = () => (dispatch) => {
   caver.klay.accounts.wallet.clear()
-  sessionStorage.removeItem(`walletInstance`)
 
   return dispatch({
     type: REMOVE_WALLET
@@ -44,16 +41,8 @@ export const logout = () => (dispatch) => {
   })
 }
 
-const isLoggedIn = () => {
-  const isClient = typeof window !== 'undefined'
-  if(isClient){
-    return !!sessionStorage.getItem(`walletInstance`)
-  }
-  return null
-}
-
 const initialState = {
-  isLoggedIn: isLoggedIn(), 
+  isLoggedIn: false, 
   privateKey: null,
   address: null
 }

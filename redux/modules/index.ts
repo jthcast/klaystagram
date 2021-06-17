@@ -3,7 +3,14 @@ import auth from './auth'
 import photos from './photos'
 import ui from './ui'
 import loading from './loading'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
+const persistConfig = {
+  key: `root`,
+  storage,
+  whitelist: [`auth`]
+}
 
 const rootReducer = combineReducers({
   auth,
@@ -14,4 +21,4 @@ const rootReducer = combineReducers({
 
 export type RootState = ReturnType<typeof rootReducer>
 
-export default rootReducer
+export default persistReducer(persistConfig, rootReducer)
