@@ -29,7 +29,7 @@ export default function LoginForm() {
   }
 
   return (
-    <form className={cssContainer} onSubmit={loginHandling}>
+    <form className={cssForm} onSubmit={loginHandling}>
       <Input
         isRequire
         type='password'
@@ -53,7 +53,7 @@ export default function LoginForm() {
   )
 }
 
-const cssContainer = css`
+const cssForm = css`
   width: 100%;
   display: grid;
   gap: 1rem;
