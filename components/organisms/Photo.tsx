@@ -14,10 +14,7 @@ interface IPhoto {
   src: string
 }
 
-export default function Photo({
-  id,
-  src
-}: IPhoto) {
+export default function Photo({ id, src }: IPhoto) {
   const userAddress = useSelector((state: RootState) => state.auth.address)
   const feed = useSelector((state: RootState) => state.photos.feed)
   const [photo] = feed.filter((photo) => photo.id === id)
@@ -26,20 +23,13 @@ export default function Photo({
   const currentOwner = last(ownerHistory).toLowerCase()
   const issueDate = new Date(timestamp * 1000)
   const issueDateFormat = format(issueDate, 'yyyy-MM-dd')
-  const issueDateDistanceToNow = formatDistanceToNow(issueDate)
+  const issueDateDistanceToNow = `${formatDistanceToNow(issueDate)} ago`
 
   return (
     <div className={cssContainer}>
-      <img 
-        className={cssImage}
-        src={src}
-        alt={name}
-      />
+      <img className={cssImage} src={src} alt={name} />
       <div className={cssInfoContainer}>
-        <PhotoHeader
-          currentOwner={currentOwner}
-          location={location}
-        />
+        <PhotoHeader currentOwner={currentOwner} location={location} />
         <PhotoInfo
           name={name}
           issueDate={issueDateDistanceToNow}
@@ -51,7 +41,7 @@ export default function Photo({
             originalOwner={originalOwner}
             currentOwner={currentOwner}
           />
-          { userAddress === currentOwner && (
+          {userAddress === currentOwner && (
             <TransferOwnershipButton
               id={id}
               issueDate={issueDateDistanceToNow}
@@ -59,9 +49,7 @@ export default function Photo({
             />
           )}
         </div>
-        <div className={cssIssueDateContainer}>
-          {issueDateFormat}
-        </div>
+        <div className={cssIssueDateContainer}>{issueDateFormat}</div>
       </div>
     </div>
   )
@@ -93,7 +81,7 @@ const cssButtonsContainer = css`
   border-left: 1px solid ${globalCss.color.borderColor};
   padding: 1rem;
 
-  button:not(:last-child){
+  button:not(:last-child) {
     margin-right: 0.5rem;
   }
 `
