@@ -27,11 +27,7 @@ export default function Header() {
     })
   }
 
-  function authHandling(){
-    if(isLoggedIn){
-      dispatch(logout())
-      return
-    }
+  function showSignupModal(){
     ui.showModal({
       content: (
         <KlaytnContainer>
@@ -51,10 +47,21 @@ export default function Header() {
     })
   }
 
-  function uploadHandling(){
+  function showUploadModal(){
     ui.showModal({
-      content: <UploadPhotoForm />
+      content: (
+        <KlaytnContainer>
+          <UploadPhotoForm />
+        </KlaytnContainer>
+      )
     })
+  }
+
+  function logoutHandling(){
+    if(isLoggedIn){
+      dispatch(logout())
+      return
+    }
   }
 
   return (
@@ -66,51 +73,62 @@ export default function Header() {
         <nav className={cssMenus}>
           <ul>
             {!isLoggedIn && (
-              <li>
-                <Button
-                  onClick={showLoginModal}
-                  title='Login'
-                >
-                  Login
-                </Button>
-              </li>
+              <>
+                <li>
+                  <Button
+                    onClick={showLoginModal}
+                    title='Login'
+                  >
+                    Login
+                  </Button>
+                </li>
+                <li>
+                  <Button
+                    className={cssSecondaryButton}
+                    onClick={showSignupModal}
+                    ghost={true}
+                    title='Sign Up'
+                  >
+                    Sign Up
+                  </Button>
+                </li>
+              </>
             )}
             {isLoggedIn && (
               <>
                 <li>
                   <Button
+                    className={cssGhostButton}
+                    ghost={true}
                     onClick={showWalletModal}
                     title='Wallet'
                   >
-                    <>
-                      <Icon iconName='wallet' />
-                      Wallet
-                    </>
+                    <Icon iconName='wallet' />
                   </Button>
                 </li>
                 <li>
                   <Button
-                    onClick={uploadHandling}
+                    className={cssGhostButton}
+                    ghost={true}
+                    onClick={showUploadModal}
                     title='Upload photo'
                   >
-                    <>
-                      <Icon iconName='upload' />
-                      Upload photo
-                    </>
+                    <Icon iconName='upload' />
+                  </Button>
+                </li>
+                <li>
+                  <Button
+                    className={cssGhostButton}
+                    ghost={true}
+                    onClick={logoutHandling}
+                    title='Logout'
+                  >
+                    <Icon iconName='logout' />
                   </Button>
                 </li>
               </>
             )}
-            <li>
-              <Button
-                className={cssSecondaryButton}
-                onClick={authHandling}
-                ghost={true}
-                title={isLoggedIn ? `Logout` : `Sign Up`}
-              >
-                {isLoggedIn ? `Logout` : `Sign Up`}
-              </Button>
-            </li>
+            
           </ul>
         </nav>
       </div>
@@ -167,4 +185,8 @@ const cssSecondaryButton = css`
   border: 0;
   padding: 0.25rem 0;
   color: ${globalCss.color.secondaryBrandColor};
+`
+
+const cssGhostButton = css`
+  font-size: 1.5rem;
 `
