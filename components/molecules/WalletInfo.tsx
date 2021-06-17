@@ -11,19 +11,19 @@ export default function WalletInfo() {
   const address = useSelector((state: RootState) => state.auth.address);
   const [balance, setBalance] = useState(0)
 
-  async function getBalance(){
-    if(!address){
-      return
+  useEffect(() => {
+    async function getBalance(){
+      if(!address){
+        return
+      }
+  
+      const peb = await caver.klay.getBalance(address)
+      const balance = caver.utils.fromPeb(peb, `KLAY`)
+      setBalance(balance)
     }
 
-    const peb = await caver.klay.getBalance(address)
-    const balance = caver.utils.fromPeb(peb, `KLAY`)
-    setBalance(balance)
-  }
-
-  useEffect(() => {
     getBalance()
-  }, [])
+  }, [address])
 
   return (
     <div className={cssContainer}>
