@@ -38,7 +38,7 @@ const cssContainer = css`
   display: flex;
   max-width: ${globalCss.common.maxWidth};
   margin: auto;
-  padding: 0.5rem 1.5rem;
+  padding: 1.875rem 1.5rem;
   
   @media ${globalCss.breakpoint.tabletQuery} {
     padding: 1.5rem 2rem; //TODO
