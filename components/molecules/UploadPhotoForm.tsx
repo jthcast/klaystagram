@@ -1,3 +1,4 @@
+import { css } from '@emotion/css'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { uploadPhoto } from '../../redux/modules/photos'
@@ -60,7 +61,10 @@ export default function UploadPhotoForm() {
   }
 
   return (
-    <form onSubmit={submitHandling}>
+    <form 
+      className={cssContainer}
+      onSubmit={submitHandling}
+    >
       <InputFile
         accept='.png, .jpg, .jpeg'
         fileName={isCompressing ? `Compressing image...` : fileName}
@@ -83,6 +87,7 @@ export default function UploadPhotoForm() {
         value={caption}
       />
       <Button 
+        className={cssButton}
         type='submit'
         title='Upload'
       >
@@ -92,3 +97,14 @@ export default function UploadPhotoForm() {
     </form>
   )
 }
+
+const cssContainer = css`
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+`
+
+const cssButton = css`
+  font-weight: bold;
+  padding: 0.5rem 0;
+`
