@@ -1,5 +1,3 @@
-import { cx } from '@emotion/css'
-
 interface ILinkNewTab {
   className?: string
   link?: string
@@ -14,10 +12,7 @@ export default function LinkNewTab({
 
   return (
     <a
-      className={cx(
-        // { [cssButton]: true },
-        { [className]: className ? true : false }
-      )}
+      className={className}
       href={link}
       target='_blank'
       rel='noreferrer noopener'

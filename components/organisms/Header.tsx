@@ -151,7 +151,7 @@ const cssContainer = css`
   padding: 0.5rem 1.5rem;
   
   @media ${globalCss.breakpoint.tabletQuery} {
-    padding: 1.5rem 2rem; //TODO
+    padding: 1.5rem 2rem;
   }
 
   @media ${globalCss.breakpoint.mobileQuery} {

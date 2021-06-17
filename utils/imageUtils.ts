@@ -64,12 +64,9 @@ export function getFileFromDataUrl(dataUrl:string, fileName:string, lastModified
     }
     let file: File | Blob
     try {
-      // file = new File([u8arr], fileName, { type: mime }) // TODO Q
       file = new File([u8arr], fileName, { type: mime, lastModified }) // Edge do not support File constructor
     } catch(error){
       file = new Blob([u8arr], { type: mime })
-      // file.name = fileName // TODO Q
-      // file.lastModified = lastModified
     }
     resolve(file)
   })
