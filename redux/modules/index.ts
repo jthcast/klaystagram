@@ -4,11 +4,11 @@ import photos from './photos'
 import ui from './ui'
 import loading from './loading'
 import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import storageSession from 'redux-persist/lib/storage/session'
 
 const persistConfig = {
   key: `root`,
-  storage,
+  storage: storageSession,
   whitelist: [`auth`]
 }
 
