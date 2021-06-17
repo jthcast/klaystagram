@@ -40,7 +40,5 @@ export default function TransferOwnershipButton({
 }
 
 const cssExchangeButton = css`
-  border: 0;
-  padding: 0;
   font-size: 1.5rem;
 `

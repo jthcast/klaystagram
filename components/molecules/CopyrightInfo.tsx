@@ -60,7 +60,5 @@ export default function CopyrightInfo({
 }
 
 const cssCopyrightInfoButton = css`
-  border: 0;
-  padding: 0;
   font-size: 1.5rem;
 `
