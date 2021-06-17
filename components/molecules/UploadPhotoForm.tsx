@@ -23,7 +23,6 @@ export default function UploadPhotoForm() {
 
   function submitHandling(event: React.FormEvent<HTMLFormElement>){
     event.preventDefault()
-    console.log('?????', file, fileName, location, caption)
     dispatch(uploadPhoto(file as File, fileName, location, caption))
     ui.hideModal()
   }
