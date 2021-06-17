@@ -50,7 +50,6 @@ const cssLabel = css`
   
   &:focus-within{
     outline: auto;
-    border: 1px solid ${globalCss.color.secondaryBrandColor};
     color: ${globalCss.color.secondaryBrandColor};
   }
 `
