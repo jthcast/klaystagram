@@ -19,7 +19,7 @@ export default function Footer() {
         {footerLinks.map(({ title, link }) => {
           return (
             <li key={link}>
-              <LinkNewTab link={link} title={title} />
+              <LinkNewTab className={cssLink} link={link} title={title} />
             </li>
           )
         })}
@@ -42,12 +42,16 @@ const cssList = css`
   list-style: none;
   font-size: 0.75rem;
 
-  li a {
-    color: ${globalCss.color.colorDown};
-    text-decoration: none;
-  }
-
   li:not(:last-child) {
     margin-right: 1rem;
+  }
+`
+
+const cssLink = css`
+  color: ${globalCss.color.colorDown};
+  text-decoration: none;
+
+  &:visited {
+    color: ${globalCss.color.colorDown};
   }
 `
