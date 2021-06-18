@@ -14,39 +14,36 @@ export default function Feed() {
   const isLoading = useSelector((state: RootState) => state.loading.isLoading)
   const feed = useSelector((state: RootState) => state.photos.feed)
 
-  function showDetailModal(event: React.MouseEvent<HTMLImageElement>){
+  function showDetailModal(event: React.MouseEvent<HTMLImageElement>) {
     const { id, src } = event.currentTarget.dataset
 
     ui.showModal({
-      content: <Photo id={id} src={src} />
+      content: <Photo id={id} src={src} />,
     })
   }
 
   useEffect(() => {
-    if(!feed){
+    if (!feed) {
       dispatch(getFeed())
     }
   }, [dispatch])
 
   return (
     <div className={cssContainer}>
-      {isLoading && <Icon iconName='spinner' spin />}
+      {isLoading && <Icon iconName="spinner" spin />}
       {!isLoading && feed && !feed.length && (
         <span>No Photo yet. How about uploading it? 😅</span>
       )}
-      {feed?.length &&
-        <ul className={cssList} >
-          {feed.map(({
-            id,
-            name,
-            data
-          }) => {
+      {feed?.length && (
+        <ul className={cssList}>
+          {feed.map(({ id, name, data }) => {
             const imageUrl = drawImageFromBytes(data)
 
-            return(
+            return (
               <li key={id}>
                 <article className={cssPost}>
-                  <img 
+                  <img
+                    className={cssImage}
                     src={imageUrl}
                     alt={name}
                     onClick={showDetailModal}
@@ -58,7 +55,7 @@ export default function Feed() {
             )
           })}
         </ul>
-      }
+      )}
     </div>
   )
 }
@@ -81,9 +78,13 @@ const cssPost = css`
   width: ${globalCss.common.maxWidthImage};
   height: ${globalCss.common.maxWidthImage};
 
-  img{
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+`
+
+const cssImage = css`
+  cursor: pointer;
 `
