@@ -1,5 +1,5 @@
-import { injectGlobal } from '@emotion/css';
-import globalCss from './global-css';
+import { injectGlobal } from '@emotion/css'
+import globalCss from './global-css'
 
 injectGlobal`
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=block');
@@ -38,11 +38,14 @@ body {
 :root {
   --background-base: #ffffff;
   --background-base-opacity: rgba(255, 255, 255, 0.85);
+  --background-base-reverse: #000000;
+  --background-base-reverse-opacity: rgba(0, 0, 0, 0.85);
   --background-down: #fafafa;
   --background-down-opacity: rgba(255, 255, 255, 0.2);
   --scrollbar-base-opacity: rgba(0, 0, 0, 0.5);
   --background-code-base: #f9f2f4;
   --color-base: #000000;
+  --color-base-reverse: #FFFFFF;
   --color-down: #70757a;
   --color-code-base: #9a354a;
   --primary-brand-base: #f6a54c;
@@ -93,4 +96,4 @@ body {
 //     }
 //   }
 // }
-`;
+`

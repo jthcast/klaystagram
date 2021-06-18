@@ -1,14 +1,14 @@
-const breakPointMobile = `17.5rem`;
-const breakPointTablet = `40.875rem`;
-const breakPointDesktop = `64rem`;
-const fontSize = `16px`;
+const breakPointMobile = `17.5rem`
+const breakPointTablet = `40.875rem`
+const breakPointDesktop = `64rem`
+const fontSize = `16px`
 
 function getFontPercent() {
-  return (parseInt(fontSize) / 16) * 100 + '%';
+  return (parseInt(fontSize) / 16) * 100 + '%'
 }
 
 export function rem(size: number) {
-  return size / parseInt(fontSize) + 'rem';
+  return size / parseInt(fontSize) + 'rem'
 }
 
 const globalCss = {
@@ -31,6 +31,8 @@ const globalCss = {
   },
   color: {
     backgroundColor: `var(--background-base)`,
+    backgroundColorReverse: `var(--background-base-reverse)`,
+    backgroundColorReverseOpacity: `var(--background-base-reverse-opacity)`,
     backgroundColorDown: `var(--background-down)`,
     backgroundColorOpacity: `var(--background-base-opacity)`,
     backgroundColorDownOpacity: `var(--background-down-opacity)`,
@@ -38,6 +40,7 @@ const globalCss = {
     groupColor: `var(--group-base)`,
     groupColorOpacity: `var(--group-base-opacity)`,
     color: `var(--color-base)`,
+    colorReverse: `var(--color-base-reverse)`,
     colorDown: `var(--color-down)`,
     primaryBrandColor: `var(--primary-brand-base)`,
     secondaryBrandColor: `var(--secondary-brand-base)`,
@@ -48,6 +51,6 @@ const globalCss = {
     white: `var(--white)`,
     danger: `var(--danger)`,
   },
-};
+}
 
-export default globalCss;
+export default globalCss
