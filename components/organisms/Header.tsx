@@ -83,7 +83,7 @@ export default function Header() {
                   <Button
                     className={cssSecondaryButton}
                     onClick={showSignupModal}
-                    ghost={true}
+                    ghost
                     title="Sign Up"
                   >
                     Sign Up
@@ -96,7 +96,7 @@ export default function Header() {
                 <li>
                   <Button
                     className={cssGhostButton}
-                    ghost={true}
+                    ghost
                     onClick={showWalletModal}
                     title="Wallet"
                   >
@@ -106,7 +106,7 @@ export default function Header() {
                 <li>
                   <Button
                     className={cssGhostButton}
-                    ghost={true}
+                    ghost
                     onClick={showUploadModal}
                     title="Upload photo"
                   >
@@ -116,7 +116,7 @@ export default function Header() {
                 <li>
                   <Button
                     className={cssGhostButton}
-                    ghost={true}
+                    ghost
                     onClick={logoutHandling}
                     title="Logout"
                   >

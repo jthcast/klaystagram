@@ -21,28 +21,31 @@ export default function UploadPhotoForm() {
   const [warningMessage, setWarningMessage] = useState(``)
   const [isCompressing, setCompressing] = useState(false)
 
-  function submitHandling(event: React.FormEvent<HTMLFormElement>){
+  function submitHandling(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     dispatch(uploadPhoto(file as File, fileName, location, caption))
     ui.hideModal()
   }
 
-  async function compressImage(imageFile: File){
-    try{
-      const compressedFile = await imageCompression(imageFile, MAX_IMAGE_SIZE_MB) as File
+  async function compressImage(imageFile: File) {
+    try {
+      const compressedFile = (await imageCompression(
+        imageFile,
+        MAX_IMAGE_SIZE_MB
+      )) as File
       setCompressing(false)
       setFile(compressedFile)
       setFileName(compressedFile.name)
-    }catch(error){
+    } catch (error) {
       setCompressing(false)
       setWarningMessage(`* Fail to compress image`)
     }
   }
 
-  function fileChangeHandling(event: React.ChangeEvent<HTMLInputElement>){
+  function fileChangeHandling(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files[0]
 
-    if(file.size > MAX_IMAGE_SIZE){
+    if (file.size > MAX_IMAGE_SIZE) {
       setCompressing(true)
       compressImage(file)
       return
@@ -51,45 +54,40 @@ export default function UploadPhotoForm() {
     setFileName(file.name)
   }
 
-  function locationChangeHandling(event: React.ChangeEvent<HTMLInputElement>){
+  function locationChangeHandling(event: React.ChangeEvent<HTMLInputElement>) {
     setLocation(event.target.value)
   }
 
-  function captionChangeHandling(event: React.ChangeEvent<HTMLTextAreaElement>){
+  function captionChangeHandling(
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) {
     setCaption(event.target.value)
   }
 
   return (
-    <form 
-      className={cssContainer}
-      onSubmit={submitHandling}
-    >
+    <form className={cssContainer} onSubmit={submitHandling}>
       <InputFile
-        accept='.png, .jpg, .jpeg'
+        accept=".png, .jpg, .jpeg"
         fileName={isCompressing ? `Compressing image...` : fileName}
-        label='File'
+        label="File"
         onChange={fileChangeHandling}
         isRequire
       />
       <Input
-        label='Location'
+        label="Location"
         onChange={locationChangeHandling}
-        placeholder='Where did you take this photo?'
+        placeholder="Where did you take this photo?"
         isRequire
         value={location}
       />
-      <Textarea 
-        label='Caption'
+      <Textarea
+        label="Caption"
         onChange={captionChangeHandling}
-        placeholder='Upload your memories'
+        placeholder="Upload your memories"
         isRequire
         value={caption}
       />
-      <Button 
-        className={cssButton}
-        type='submit'
-        title='Upload'
-      >
+      <Button className={cssButton} type="submit" title="Upload">
         Upload
       </Button>
       <p>{warningMessage}</p>

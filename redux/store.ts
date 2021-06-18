@@ -6,7 +6,7 @@ import reducers from './modules'
 
 let store
 
-function initStore(initialState){
+function initStore(initialState) {
   return createStore(
     reducers,
     initialState,
@@ -14,29 +14,29 @@ function initStore(initialState){
   )
 }
 
-export function initializeStore(preloadedState){
+export function initializeStore(preloadedState) {
   let _store = store ?? initStore(preloadedState)
 
-  if(preloadedState && store){
+  if (preloadedState && store) {
     _store = initStore({
       ...store.getState(),
-      ...preloadedState
+      ...preloadedState,
     })
     store = undefined
   }
 
-  if(typeof window === `undefined`){
+  if (typeof window === `undefined`) {
     return _store
   }
-  if(!store){
+  if (!store) {
     store = _store
   }
 
   return _store
 }
 
-export function useStore(initialState){
+export function useStore(initialState) {
   const store = useMemo(() => initializeStore(initialState), [initialState])
-  
+
   return store
 }

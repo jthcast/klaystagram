@@ -18,37 +18,44 @@ export const SET_FEED = `photos/SET_FEED`
 
 const setFeed = (feed: IPhoto[] | IPhoto) => ({
   type: SET_FEED,
-  payload: { feed }
+  payload: { feed },
 })
 
 const updateFeed = (tokenId: string) => async (dispatch, getState) => {
   const newPhoto = await KlaystagramContract.methods.getPhoto(tokenId).call()
-  const { photos: { feed } } = getState()
+  const {
+    photos: { feed },
+  } = getState()
   const newFeed: IPhoto[] = [feedParser(newPhoto), ...feed]
   dispatch(setFeed(newFeed))
 }
 
-const updateOwnerAddress = (tokenId: string, to: string) => (dispatch, getState) => {
-  const { photos: { feed } } = getState()
-  const newFeed = feed.map((photo: IPhoto) => {
-    if(photo.id !== tokenId){
+const updateOwnerAddress =
+  (tokenId: string, to: string) => (dispatch, getState) => {
+    const {
+      photos: { feed },
+    } = getState()
+    const newFeed = feed.map((photo: IPhoto) => {
+      if (photo.id !== tokenId) {
+        return photo
+      }
+      photo.ownerHistory = [...photo.ownerHistory, to]
       return photo
-    }
-    photo.ownerHistory = [...photo.ownerHistory, to]
-    return photo
-  })
-  dispatch(setFeed(newFeed))
-}
+    })
+    dispatch(setFeed(newFeed))
+  }
 
 export const getFeed = () => async (dispatch) => {
   dispatch(startLoading())
-  const totalPhotoCount = await KlaystagramContract.methods.getTotalPhotoCount().call()
-  if(!totalPhotoCount){
+  const totalPhotoCount = await KlaystagramContract.methods
+    .getTotalPhotoCount()
+    .call()
+  if (!totalPhotoCount) {
     return []
   }
 
   const feed = []
-  for(let i=totalPhotoCount; i>0; i--){
+  for (let i = totalPhotoCount; i > 0; i--) {
     const photo = KlaystagramContract.methods.getPhoto(i).call()
     feed.push(photo)
   }
@@ -58,83 +65,84 @@ export const getFeed = () => async (dispatch) => {
   dispatch(endLoading())
 }
 
-export const uploadPhoto = (
-  file: File,
-  fileName: string,
-  location: string,
-  caption: string
-) => (dispatch) => {
-  const reader = new window.FileReader()
-  reader.readAsArrayBuffer(file)
-  reader.onloadend = async () => {
-    const buffer = Buffer.from(reader.result as string)
-    /**
-     * Add prefix `0x` to hexString
-     * to recognize hexString as bytes by contract
-     */
-    const hexString = `0x` + buffer.toString(`hex`)
+export const uploadPhoto =
+  (file: File, fileName: string, location: string, caption: string) =>
+  (dispatch) => {
+    const reader = new window.FileReader()
+    reader.readAsArrayBuffer(file)
+    reader.onloadend = async () => {
+      const buffer = Buffer.from(reader.result as string)
+      /**
+       * Add prefix `0x` to hexString
+       * to recognize hexString as bytes by contract
+       */
+      const hexString = `0x` + buffer.toString(`hex`)
+      ui.showToast({
+        status: `pending`,
+        message: `Sending a transaction... (uploadPhoto)`,
+      })
+      try {
+        const receipt = await KlaystagramContract.methods
+          .uploadPhoto(hexString, fileName, location, caption)
+          .send({
+            from: getWallet().address,
+            gas: `100000000`,
+          })
+        ui.showToast({
+          status: receipt.status ? `success` : `fail`,
+          message: `Received receipt! It means your transaction is in Klaytn
+        block (#${receipt.blockNumber}) (uploadPhoto)`,
+          link: receipt.transactionHash,
+        })
+        const tokenId = receipt.events.PhotoUploaded.returnValues[0]
+        dispatch(updateFeed(tokenId))
+      } catch (error) {
+        ui.showToast({
+          status: `error`,
+          message: error.toString(),
+        })
+      }
+    }
+  }
+
+export const transferOwnership =
+  (tokenId: string, to: string) => async (dispatch) => {
     ui.showToast({
       status: `pending`,
-      message: `Sending a transaction... (uploadPhoto)`,
+      message: `Sending a transaction... (transferOwnership)`,
     })
-    try{
-      const receipt = await KlaystagramContract.methods.uploadPhoto(hexString, fileName, location, caption).send({
-        from: getWallet().address,
-        gas: `100000000`
-      })
+    try {
+      const receipt = await KlaystagramContract.methods
+        .transferOwnership(tokenId, to)
+        .send({
+          from: getWallet().address,
+          gas: `10000000`,
+        })
       ui.showToast({
         status: receipt.status ? `success` : `fail`,
         message: `Received receipt! It means your transaction is in Klaytn
-        block (#${receipt.blockNumber}) (uploadPhoto)`,
-        link: receipt.transactionHash
+      block (#${receipt.blockNumber}) (transferOwnership)`,
+        link: receipt.transactionHash,
       })
-      const tokenId = receipt.events.PhotoUploaded.returnValues[0]
-      dispatch(updateFeed(tokenId))
-    }catch(error){
+      dispatch(updateOwnerAddress(tokenId, to))
+    } catch (error) {
       ui.showToast({
         status: `error`,
-        message: error.toString()
+        message: error.toString(),
       })
     }
   }
-}
-
-export const transferOwnership = (tokenId: string, to: string) => async (dispatch) => {
-  ui.showToast({
-    status: `pending`,
-    message: `Sending a transaction... (transferOwnership)`,
-  })
-  try{
-    const receipt = await KlaystagramContract.methods.transferOwnership(tokenId, to).send({
-      from: getWallet().address,
-      gas: `10000000`
-    })
-    ui.showToast({
-      status: receipt.status ? `success` : `fail`,
-      message: `Received receipt! It means your transaction is in Klaytn
-      block (#${receipt.blockNumber}) (transferOwnership)`,
-      link: receipt.transactionHash
-    })
-    dispatch(updateOwnerAddress(tokenId, to))
-  }catch(error){
-    ui.showToast({
-      status: `error`,
-      message: error.toString()
-    })
-  }
-  
-}
 
 const initialState = {
-  feed: null
+  feed: null,
 }
 
-export default function photosReducer(state = initialState, action){
+export default function photosReducer(state = initialState, action) {
   switch (action.type) {
     case SET_FEED:
       return {
         ...state,
-        feed: action.payload.feed
+        feed: action.payload.feed,
       }
     default:
       return state

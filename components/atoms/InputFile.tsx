@@ -2,7 +2,7 @@ import { css, cx } from '@emotion/css'
 import { InputHTMLAttributes } from 'react'
 import globalCss from '../../styles/global-css'
 
-interface IInputFile extends InputHTMLAttributes<HTMLElement>{
+interface IInputFile extends InputHTMLAttributes<HTMLElement> {
   accept?: string
   className?: string
   fileName?: string
@@ -19,29 +19,25 @@ export default function InputFile({
   isRequire = false,
   label = ``,
   onChange,
-  value
+  value,
 }: IInputFile) {
-
   return (
-    <label className={cx(
-      { [cssLabel]: true },
-      { [className]: !!className }
-    )}>
-      <span className={cssLabelSpan}>
-        {label}
-      </span>
+    <label className={cx({ [cssLabel]: true }, { [className]: !!className })}>
+      <span className={cssLabelSpan}>{label}</span>
       <input
         className={cssInput}
         accept={accept}
         required={isRequire}
-        type='file'
+        type="file"
         value={value}
         onChange={onChange}
       />
-      <p className={cx(
-        { [cssFileName]: true },
-        { [cssFileAttached]: !!fileName }
-      )}>
+      <p
+        className={cx(
+          { [cssFileName]: true },
+          { [cssFileAttached]: !!fileName }
+        )}
+      >
         {fileName || `No photo`}
       </p>
     </label>

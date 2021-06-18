@@ -2,7 +2,7 @@ import { css, cx } from '@emotion/css'
 import { TextareaHTMLAttributes } from 'react'
 import globalCss from '../../styles/global-css'
 
-interface ITextarea extends TextareaHTMLAttributes<HTMLElement>{
+interface ITextarea extends TextareaHTMLAttributes<HTMLElement> {
   className?: string
   isRequire?: boolean
   label?: string
@@ -17,23 +17,14 @@ export default function Textarea({
   label = ``,
   onChange,
   placeholder,
-  value
+  value,
 }: ITextarea) {
-  
   return (
-    <label className={cx(
-      { [cssLabel]: true },
-      { [className]: !!className }
-    )}>
-      <span className={cssLabelSpan}>
-        {label}
-      </span>
+    <label className={cx({ [cssLabel]: true }, { [className]: !!className })}>
+      <span className={cssLabelSpan}>{label}</span>
       <textarea
-        className={cx(
-          { [cssTextarea]: true },
-          { [cssLabelText]: !!label }
-        )}
-        autoComplete='off'
+        className={cx({ [cssTextarea]: true }, { [cssLabelText]: !!label })}
+        autoComplete="off"
         required={isRequire}
         onChange={onChange}
         placeholder={placeholder}
@@ -47,8 +38,8 @@ const cssLabel = css`
   position: relative;
   border: 1px solid ${globalCss.color.borderColor};
   border-radius: 0.25rem;
-  
-  &:focus-within{
+
+  &:focus-within {
     outline: auto;
     color: ${globalCss.color.secondaryBrandColor};
   }
@@ -74,15 +65,15 @@ const cssTextarea = css`
   font-size: 1rem;
   resize: none;
 
-  &:disabled{
+  &:disabled {
     cursor: not-allowed;
   }
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 
-  &::placeholder{
+  &::placeholder {
     color: ${globalCss.color.borderColor};
   }
 `

@@ -9,14 +9,14 @@ import storageSession from 'redux-persist/lib/storage/session'
 const persistConfig = {
   key: `root`,
   storage: storageSession,
-  whitelist: [`auth`]
+  whitelist: [`auth`],
 }
 
 const rootReducer = combineReducers({
   auth,
   photos,
   ui,
-  loading
+  loading,
 })
 
 export type RootState = ReturnType<typeof rootReducer>

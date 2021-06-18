@@ -5,55 +5,55 @@ export const HIDE_TOAST = `ui/HIDE_TOAST`
 
 export const showModal = (content) => {
   content.isOpen = true
-  return ({
+  return {
     type: SHOW_MODAL,
     payload: {
-      content
-    }
-  })
+      content,
+    },
+  }
 }
 
 export const hideModal = () => ({
-  type: HIDE_MODAL
+  type: HIDE_MODAL,
 })
 
 export const showToast = (toast) => ({
   type: SHOW_TOAST,
   payload: {
-    toast
-  }
+    toast,
+  },
 })
 
 export const hideToast = () => ({
-  type: HIDE_TOAST
+  type: HIDE_TOAST,
 })
 
 const initialState = {
   modal: null,
-  toast: null
+  toast: null,
 }
 
-export default function uiReducer(state = initialState, action){
+export default function uiReducer(state = initialState, action) {
   switch (action.type) {
     case SHOW_MODAL:
       return {
         ...state,
-        modal: action.payload.content
+        modal: action.payload.content,
       }
     case HIDE_MODAL:
       return {
         ...state,
-        modal: null
+        modal: null,
       }
     case SHOW_TOAST:
       return {
         ...state,
-        toast: action.payload.toast
+        toast: action.payload.toast,
       }
     case HIDE_TOAST:
       return {
         ...state,
-        toast: null
+        toast: null,
       }
     default:
       return state

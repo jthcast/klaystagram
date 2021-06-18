@@ -2,7 +2,7 @@ import { css, cx } from '@emotion/css'
 import { InputHTMLAttributes } from 'react'
 import globalCss from '../../styles/global-css'
 
-interface IInput extends InputHTMLAttributes<HTMLElement>{
+interface IInput extends InputHTMLAttributes<HTMLElement> {
   autoFocus?: boolean
   className?: string
   isDisabled?: boolean
@@ -29,28 +29,25 @@ export default function Input({
   isReadOnly = false,
   isRequire = false,
   type = `text`,
-  value
+  value,
 }: IInput) {
   const onEnterHandling = (event) => {
-    if(onEnter && event.key === `Enter`){
+    if (onEnter && event.key === `Enter`) {
       onEnter(event)
     }
   }
 
   return (
-    <label className={cx(
-      { [cssLabel]: true },
-      { [cssLabelDisabled]: isDisabled },
-      { [className]: !!className }
-    )}>
-      <span className={cssLabelSpan}>
-        {label}
-      </span>
+    <label
+      className={cx(
+        { [cssLabel]: true },
+        { [cssLabelDisabled]: isDisabled },
+        { [className]: !!className }
+      )}
+    >
+      <span className={cssLabelSpan}>{label}</span>
       <input
-        className={cx(
-          { [cssInput]: true },
-          { [cssLabelText]: !!label }
-        )}
+        className={cx({ [cssInput]: true }, { [cssLabelText]: !!label })}
         autoFocus={autoFocus}
         disabled={isDisabled}
         placeholder={placeholder}
@@ -68,8 +65,8 @@ export default function Input({
 
 const cssLabel = css`
   position: relative;
-  
-  &:focus-within{
+
+  &:focus-within {
     color: ${globalCss.color.secondaryBrandColor};
   }
 `
@@ -99,15 +96,15 @@ const cssInput = css`
   padding: 0.5rem;
   font-size: 1rem;
 
-  &:disabled{
+  &:disabled {
     cursor: not-allowed;
   }
 
-  &:focus{
+  &:focus {
     outline-color: ${globalCss.color.secondaryBrandColor};
   }
 
-  &::placeholder{
+  &::placeholder {
     color: ${globalCss.color.borderColor};
   }
 `

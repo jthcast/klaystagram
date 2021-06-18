@@ -13,17 +13,17 @@ export default function LoginForm() {
   const [privateKey, setPrivateKey] = useState(``)
   const [warningMessage, setWarningMessage] = useState(``)
 
-  function onChangeHandling(event: React.ChangeEvent<HTMLInputElement>){
+  function onChangeHandling(event: React.ChangeEvent<HTMLInputElement>) {
     setPrivateKey(event.target.value)
   }
 
-  function loginHandling(event: React.FormEvent<HTMLFormElement>){
+  function loginHandling(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    if(isValidPrivateKey(privateKey)){
+    if (isValidPrivateKey(privateKey)) {
       dispatch(login(privateKey))
       ui.hideModal()
-    }else{
+    } else {
       setWarningMessage(`* Invalid Private Key`)
     }
   }
@@ -32,23 +32,15 @@ export default function LoginForm() {
     <form className={cssForm} onSubmit={loginHandling}>
       <Input
         isRequire
-        type='password'
-        label='Login with Private Key'
-        placeholder='0x2c4078447...'
+        type="password"
+        label="Login with Private Key"
+        placeholder="0x2c4078447..."
         onChange={onChangeHandling}
       />
-      <Button
-        className={cssButton}
-        title='Login'
-        type='submit'
-      >
+      <Button className={cssButton} title="Login" type="submit">
         Log in
       </Button>
-      {warningMessage && 
-        <p className={cssWarningMessage}>
-          {warningMessage}
-        </p>
-      }
+      {warningMessage && <p className={cssWarningMessage}>{warningMessage}</p>}
     </form>
   )
 }

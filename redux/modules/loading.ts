@@ -3,33 +3,33 @@ const END_LOADING = `loading/END_LOADING`
 
 export const startLoading = () => (dispatch) => {
   dispatch({
-    type: START_LOADING
+    type: START_LOADING,
   })
 }
 
 export const endLoading = () => (dispatch) => {
   dispatch({
-    type: END_LOADING
+    type: END_LOADING,
   })
 }
 
 const initialState = {
-  isLoading: false
+  isLoading: false,
 }
 
-export default function loadingReducer(state = initialState, action){
-  switch (action.type){
+export default function loadingReducer(state = initialState, action) {
+  switch (action.type) {
     case START_LOADING:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       }
     case END_LOADING:
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
       }
     default:
-    return state
+      return state
   }
 }

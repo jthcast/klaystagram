@@ -1,7 +1,11 @@
-const renameKeys = (obj: Object, newKeys: Object) => Object.keys(obj).reduce((acc, key) => ({
-  ...acc,
-  ...{ [newKeys[key] || key]: obj[key] } 
-}), {})
+const renameKeys = (obj: Object, newKeys: Object) =>
+  Object.keys(obj).reduce(
+    (acc, key) => ({
+      ...acc,
+      ...{ [newKeys[key] || key]: obj[key] },
+    }),
+    {}
+  )
 
 export const last = (array: Array<any>) => {
   return array?.length ? array[array.length - 1] : undefined
@@ -18,7 +22,7 @@ export const feedParser = (feed: Array<any> | Object) => {
     6: `timestamp`,
   }
 
-  if(!Array.isArray(feed)){
+  if (!Array.isArray(feed)) {
     return renameKeys(feed, photoKeys)
   }
   return feed.map((photo) => renameKeys(photo, photoKeys))

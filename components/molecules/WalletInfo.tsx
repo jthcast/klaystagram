@@ -8,15 +8,15 @@ import Input from '../atoms/Input'
 import LinkNewTab from '../atoms/LinkNewTab'
 
 export default function WalletInfo() {
-  const address = useSelector((state: RootState) => state.auth.address);
+  const address = useSelector((state: RootState) => state.auth.address)
   const [balance, setBalance] = useState(0)
 
   useEffect(() => {
-    async function getBalance(){
-      if(!address){
+    async function getBalance() {
+      if (!address) {
         return
       }
-  
+
       const peb = await caver.klay.getBalance(address)
       const balance = caver.utils.fromPeb(peb, `KLAY`)
       setBalance(balance)
@@ -27,23 +27,12 @@ export default function WalletInfo() {
 
   return (
     <div className={cssContainer}>
-      <Input
-        isReadOnly
-        label='Wallet Address'
-        value={address || ``}
-      />
-      <Input
-        isReadOnly
-        label='Balance'
-        value={`${balance} KLAY`}
-      />
+      <Input isReadOnly label="Wallet Address" value={address || ``} />
+      <Input isReadOnly label="Balance" value={`${balance} KLAY`} />
       <p className={cssMessage}>
         If you need small amount of Klay for testing?
         <br />
-        <LinkNewTab
-          link={KLAY_FAUCET}
-          title='Run Klay Faucet'
-        />
+        <LinkNewTab link={KLAY_FAUCET} title="Run Klay Faucet" />
       </p>
     </div>
   )

@@ -7,12 +7,7 @@ interface IPhotoInfo {
   caption?: string
 }
 
-export default function PhotoInfo({
-  name,
-  issueDate,
-  caption
-}: IPhotoInfo) {
-
+export default function PhotoInfo({ name, issueDate, caption }: IPhotoInfo) {
   return (
     <div className={cssContainer}>
       <h2 className={cssFileName}>{name}</h2>

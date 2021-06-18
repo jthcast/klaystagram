@@ -3,7 +3,6 @@ import globalCss from '../../styles/global-css'
 import Logo from '../atoms/Logo'
 
 export default function KlaytnContainer({ children }) {
-
   return (
     <div className={cssKlaytnContainer}>
       <div className={cssContainer}>
@@ -14,11 +13,7 @@ export default function KlaytnContainer({ children }) {
           Klaytn-based NFT photo licensing application
         </h2>
       </div>
-      {children && (
-        <div className={cssChildrenContainer}>
-          {children}
-        </div>
-      )}
+      {children && <div className={cssChildrenContainer}>{children}</div>}
     </div>
   )
 }
@@ -38,7 +33,7 @@ const cssContainer = css`
 const cssLogo = css`
   font-size: 2rem;
 
-  h1{
+  h1 {
     font-size: 2.5rem;
   }
 `

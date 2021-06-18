@@ -1,13 +1,18 @@
-import { drawImageInCanvas, getDataUrlFromFile, getFileFromDataUrl, loadImage } from './imageUtils'
+import {
+  drawImageInCanvas,
+  getDataUrlFromFile,
+  getFileFromDataUrl,
+  loadImage,
+} from './imageUtils'
 
 export default async function imageCompression(
   file: any,
   maxSizeMB = Number.POSITIVE_INFINITY,
   maxWidthOrHeight?: number
 ) {
-  if(!(file instanceof Blob || file instanceof File)){
+  if (!(file instanceof Blob || file instanceof File)) {
     throw new Error(`The file given is not an instance of Blob or File`)
-  }else if(!/^image/.test(file.type)){
+  } else if (!/^image/.test(file.type)) {
     throw new Error(`The file given is not an image`)
   }
 
@@ -17,10 +22,14 @@ export default async function imageCompression(
   const canvas = drawImageInCanvas(img, maxWidthOrHeight)
   let quality = 0.9
   const { type, name, lastModified } = file as File
-  let compressedFile = await getFileFromDataUrl(canvas.toDataURL(type, quality), name, lastModified)
+  let compressedFile = await getFileFromDataUrl(
+    canvas.toDataURL(type, quality),
+    name,
+    lastModified
+  )
 
-  if(file){
-    while(compressedFile.size > maxSizeByte){
+  if (file) {
+    while (compressedFile.size > maxSizeByte) {
       canvas.width *= 0.9
       canvas.height *= 0.9
 
@@ -28,13 +37,21 @@ export default async function imageCompression(
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
 
       const compressedDataUrl = canvas.toDataURL(type, quality)
-      compressedFile = await getFileFromDataUrl(compressedDataUrl, name, lastModified)
+      compressedFile = await getFileFromDataUrl(
+        compressedDataUrl,
+        name,
+        lastModified
+      )
     }
-  }else{
-    while(compressedFile.size > maxSizeByte){
+  } else {
+    while (compressedFile.size > maxSizeByte) {
       quality *= 0.9
       const compressedDataUrl = canvas.toDataURL(type, quality)
-      compressedFile = await getFileFromDataUrl(compressedDataUrl, name, lastModified)
+      compressedFile = await getFileFromDataUrl(
+        compressedDataUrl,
+        name,
+        lastModified
+      )
     }
   }
 

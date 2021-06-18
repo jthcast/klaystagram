@@ -13,8 +13,8 @@ export const integrateWallet = (privateKey: string) => (dispatch) => {
     type: INTEGRATE_WALLET,
     payload: {
       privateKey,
-      address: walletInstance.address
-    }
+      address: walletInstance.address,
+    },
   })
 }
 
@@ -22,7 +22,7 @@ export const removeWallet = () => (dispatch) => {
   caver.klay.accounts.wallet.clear()
 
   return dispatch({
-    type: REMOVE_WALLET
+    type: REMOVE_WALLET,
   })
 }
 
@@ -30,46 +30,46 @@ export const login = (privateKey: string) => (dispatch) => {
   dispatch(integrateWallet(privateKey))
   dispatch({
     type: LOGIN,
-    privateKey
+    privateKey,
   })
 }
 
 export const logout = () => (dispatch) => {
   dispatch(removeWallet())
   dispatch({
-    type: LOGOUT
+    type: LOGOUT,
   })
 }
 
 const initialState = {
-  isLoggedIn: false, 
+  isLoggedIn: false,
   privateKey: null,
-  address: null
+  address: null,
 }
 
-export default function authReducer(state = initialState, action){
+export default function authReducer(state = initialState, action) {
   switch (action.type) {
     case INTEGRATE_WALLET:
       return {
         ...state,
         privateKey: action.payload.privateKey,
-        address: action.payload.address
+        address: action.payload.address,
       }
     case REMOVE_WALLET:
       return {
         ...state,
         privateKey: null,
-        address: null
+        address: null,
       }
     case LOGIN:
       return {
         ...state,
-        isLoggedIn: true
+        isLoggedIn: true,
       }
     case LOGOUT:
       return {
         ...state,
-        isLoggedIn: false
+        isLoggedIn: false,
       }
     default:
       return state

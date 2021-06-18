@@ -16,7 +16,7 @@ export default function TransferOwnershipButton({
   id,
   issueDate,
 }: ITransferOwnershipButton) {
-  function showModalHandling(){
+  function showModalHandling() {
     ui.showModal({
       content: (
         <KlaytnContainer>
@@ -26,18 +26,18 @@ export default function TransferOwnershipButton({
             currentOwner={currentOwner}
           />
         </KlaytnContainer>
-      )
+      ),
     })
   }
 
   return (
     <Button
       className={cssExchangeButton}
-      title='Transfer Ownership'
+      title="Transfer Ownership"
       onClick={showModalHandling}
-      ghost={true}
+      ghost
     >
-      <Icon iconName='exchange' />
+      <Icon iconName="exchange" />
     </Button>
   )
 }

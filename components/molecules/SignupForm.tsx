@@ -7,7 +7,7 @@ import { css } from '@emotion/css'
 export default function SignupForm() {
   const [privateKey, setPrivateKey] = useState(``)
 
-  function generatePrivateKey(event: React.FormEvent<HTMLFormElement>){
+  function generatePrivateKey(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     const { privateKey } = caver.klay.accounts.create()
@@ -17,16 +17,12 @@ export default function SignupForm() {
   return (
     <form className={cssContainer} onSubmit={generatePrivateKey}>
       <Input
-        label='Private Key'
-        placeholder='Generate Private Key to Sign up'
+        label="Private Key"
+        placeholder="Generate Private Key to Sign up"
         value={privateKey || ''}
         isReadOnly
       />
-      <Button
-        className={cssButton}
-        title='Generate Private Key'
-        type='submit'
-      >
+      <Button className={cssButton} title="Generate Private Key" type="submit">
         Generate Private Key
       </Button>
     </form>
