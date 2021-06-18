@@ -15,7 +15,7 @@ const Modal = ({
   openHandler,
   onClose,
   children,
-  escClose = true
+  escClose = true,
 }: IModal): React.ReactElement => {
   const openHandling = () => {
     if (openHandler) {
@@ -53,11 +53,7 @@ const Modal = ({
 
   return (
     <>
-      <div
-        className={cssModal(isOpen)}
-        role="dialog"
-        aria-modal="true"
-      >
+      <div className={cssModal(isOpen)} role="dialog" aria-modal="true">
         {children}
         <div
           role="presentation"
@@ -77,8 +73,7 @@ const cssModal = (isOpen: boolean) => css`
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: ${globalCss.color.backgroundColorDownOpacity};
-  backdrop-filter: blur(16px);
+  background-color: ${globalCss.color.backgroundColorReverseOpacityMore};
   flex-direction: column;
   align-items: center;
   transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
