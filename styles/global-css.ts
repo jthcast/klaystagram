@@ -21,6 +21,7 @@ const globalCss = {
   },
   common: {
     maxWidth: `60.938rem`,
+    maxWidthWithoutPadding: `58.438rem`,
     maxWidthHeader: `100%`,
     maxWidthImage: `18.313rem`,
     fontBold: `600`,
@@ -33,6 +34,7 @@ const globalCss = {
     backgroundColor: `var(--background-base)`,
     backgroundColorReverse: `var(--background-base-reverse)`,
     backgroundColorReverseOpacity: `var(--background-base-reverse-opacity)`,
+    backgroundColorReverseOpacityMore: `var(--background-base-reverse-opacity-more)`,
     backgroundColorDown: `var(--background-down)`,
     backgroundColorOpacity: `var(--background-base-opacity)`,
     backgroundColorDownOpacity: `var(--background-down-opacity)`,

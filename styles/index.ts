@@ -40,6 +40,7 @@ body {
   --background-base-opacity: rgba(255, 255, 255, 0.85);
   --background-base-reverse: #000000;
   --background-base-reverse-opacity: rgba(0, 0, 0, 0.85);
+  --background-base-reverse-opacity-more: rgba(0, 0, 0, 0.5);
   --background-down: #fafafa;
   --background-down-opacity: rgba(255, 255, 255, 0.2);
   --scrollbar-base-opacity: rgba(0, 0, 0, 0.5);
