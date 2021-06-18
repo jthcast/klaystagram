@@ -1,4 +1,6 @@
+import { css } from '@emotion/css'
 import * as URL from '../../constants/url'
+import globalCss from '../../styles/global-css'
 import LinkNewTab from '../atoms/LinkNewTab'
 
 export default function Footer() {
@@ -12,15 +14,12 @@ export default function Footer() {
   ]
 
   return (
-    <footer>
-      <ul>
+    <footer className={cssFooter}>
+      <ul className={cssList}>
         {footerLinks.map(({ title, link }) => {
-          return(
+          return (
             <li key={link}>
-              <LinkNewTab
-                link={link}
-                title={title}
-              />
+              <LinkNewTab link={link} title={title} />
             </li>
           )
         })}
@@ -28,3 +27,26 @@ export default function Footer() {
     </footer>
   )
 }
+
+const cssFooter = css`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: ${globalCss.common.maxWidth};
+  margin: auto;
+`
+
+const cssList = css`
+  display: flex;
+  list-style: none;
+  font-size: 0.75rem;
+
+  li a {
+    color: ${globalCss.color.colorDown};
+    text-decoration: none;
+  }
+
+  li:not(:last-child) {
+    margin-right: 1rem;
+  }
+`
