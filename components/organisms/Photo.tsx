@@ -57,17 +57,16 @@ export default function Photo({ id, src }: IPhoto) {
 
 const cssContainer = css`
   width: 100%;
-  max-width: 70vw;
+  max-width: ${globalCss.common.maxWidthWithoutPadding};
   max-height: 85vh;
   display: flex;
   background-color: ${globalCss.color.backgroundColor};
-  border: 1px solid ${globalCss.color.borderColor};
   margin: auto;
 `
 
 const cssImage = css`
   width: 100%;
-  max-width: 41.5vw;
+  max-width: 37.5rem;
 `
 
 const cssInfoContainer = css`
