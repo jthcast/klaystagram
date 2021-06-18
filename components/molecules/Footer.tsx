@@ -24,26 +24,35 @@ export default function Footer() {
           )
         })}
       </ul>
+      <p className={cssCopyright}>@ 2021 Klaystagram from Klaytn</p>
     </footer>
   )
 }
 
 const cssFooter = css`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   max-width: ${globalCss.common.maxWidth};
   margin: auto auto 0 auto;
-  padding: 0 0 3.25rem 0;
+  padding: 0 1.25rem 3.25rem 1.25rem;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    padding: 0rem 1rem 3.25rem 1rem;
+  }
 `
 
 const cssList = css`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
   list-style: none;
   font-size: 0.75rem;
 
-  li:not(:last-child) {
-    margin-right: 1rem;
+  li {
+    margin: 0 0.5rem 0.75rem 0.5rem;
   }
 `
 
@@ -54,4 +63,11 @@ const cssLink = css`
   &:visited {
     color: ${globalCss.color.colorDown};
   }
+`
+
+const cssCopyright = css`
+  display: flex;
+  justify-content: center;
+  color: ${globalCss.color.colorDown};
+  font-size: 0.75rem;
 `

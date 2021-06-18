@@ -39,6 +39,6 @@ const cssContainer = css`
   padding: 1.875rem 1.25rem;
 
   @media ${globalCss.breakpoint.mobileQuery} {
-    padding: 1rem 0;
+    padding: 1.875rem 0;
   }
 `
