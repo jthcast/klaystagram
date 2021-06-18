@@ -33,7 +33,7 @@ const cssFooter = css`
   justify-content: center;
   width: 100%;
   max-width: ${globalCss.common.maxWidth};
-  margin: auto;
+  margin: auto auto 0 auto;
   padding: 0 0 3.25rem 0;
 `
 

@@ -61,16 +61,17 @@ export default function Feed() {
 }
 
 const cssContainer = css`
+  width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 `
 
 const cssList = css`
+  width: 100%;
   list-style: none;
   display: grid;
-  gap: 2rem;
+  gap: 1.75rem;
   grid-template-columns: 1fr 1fr 1fr;
 `
 

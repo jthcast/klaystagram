@@ -15,50 +15,50 @@ import Logo from '../atoms/Logo'
 
 export default function Header() {
   const dispatch = useDispatch()
-  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
 
-  function showLoginModal(){
+  function showLoginModal() {
     ui.showModal({
       content: (
         <KlaytnContainer>
           <LoginForm />
         </KlaytnContainer>
-      )
+      ),
     })
   }
 
-  function showSignupModal(){
+  function showSignupModal() {
     ui.showModal({
       content: (
         <KlaytnContainer>
           <SignupForm />
         </KlaytnContainer>
-      )
+      ),
     })
   }
 
-  function showWalletModal(){
+  function showWalletModal() {
     ui.showModal({
       content: (
         <KlaytnContainer>
           <WalletInfo />
         </KlaytnContainer>
-      )
+      ),
     })
   }
 
-  function showUploadModal(){
+  function showUploadModal() {
     ui.showModal({
       content: (
         <KlaytnContainer>
           <UploadPhotoForm />
         </KlaytnContainer>
-      )
+      ),
     })
   }
 
-  function logoutHandling(){
-    if(isLoggedIn){
+  function logoutHandling() {
+    if (isLoggedIn) {
       dispatch(logout())
       return
     }
@@ -75,10 +75,7 @@ export default function Header() {
             {!isLoggedIn && (
               <>
                 <li>
-                  <Button
-                    onClick={showLoginModal}
-                    title='Login'
-                  >
+                  <Button onClick={showLoginModal} title="Login">
                     Login
                   </Button>
                 </li>
@@ -87,7 +84,7 @@ export default function Header() {
                     className={cssSecondaryButton}
                     onClick={showSignupModal}
                     ghost={true}
-                    title='Sign Up'
+                    title="Sign Up"
                   >
                     Sign Up
                   </Button>
@@ -101,9 +98,9 @@ export default function Header() {
                     className={cssGhostButton}
                     ghost={true}
                     onClick={showWalletModal}
-                    title='Wallet'
+                    title="Wallet"
                   >
-                    <Icon iconName='wallet' />
+                    <Icon iconName="wallet" />
                   </Button>
                 </li>
                 <li>
@@ -111,9 +108,9 @@ export default function Header() {
                     className={cssGhostButton}
                     ghost={true}
                     onClick={showUploadModal}
-                    title='Upload photo'
+                    title="Upload photo"
                   >
-                    <Icon iconName='upload' />
+                    <Icon iconName="upload" />
                   </Button>
                 </li>
                 <li>
@@ -121,14 +118,13 @@ export default function Header() {
                     className={cssGhostButton}
                     ghost={true}
                     onClick={logoutHandling}
-                    title='Logout'
+                    title="Logout"
                   >
-                    <Icon iconName='logout' />
+                    <Icon iconName="logout" />
                   </Button>
                 </li>
               </>
             )}
-            
           </ul>
         </nav>
       </div>
@@ -143,13 +139,13 @@ const cssHeader = css`
   background-color: ${globalCss.color.white};
   border-bottom: 1px solid ${globalCss.color.borderColor};
 `
-  
+
 const cssContainer = css`
   display: flex;
   max-width: ${globalCss.common.maxWidth};
   margin: auto;
-  padding: 0.5rem 1.5rem;
-  
+  padding: 0.5rem 1.25rem;
+
   @media ${globalCss.breakpoint.tabletQuery} {
     padding: 1.5rem 2rem;
   }
@@ -171,11 +167,11 @@ const cssMenus = css`
     display: flex;
     list-style: none;
 
-    li button{
+    li button {
       font-weight: bold;
     }
 
-    li:not(:last-child){
+    li:not(:last-child) {
       margin: 0 1rem 0 0;
     }
   }

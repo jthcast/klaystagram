@@ -9,24 +9,20 @@ import { css } from '@emotion/css'
 import globalCss from '../../styles/global-css'
 
 export default function Layout({ children }) {
-  const { isOpen = false, content } = useSelector((state: RootState) => state.ui.modal) || {}
+  const { isOpen = false, content } =
+    useSelector((state: RootState) => state.ui.modal) || {}
   const toast = useSelector((state: RootState) => state.ui.toast)
 
-  function modalHandling(){
+  function modalHandling() {
     ui.hideModal()
   }
 
   return (
     <>
       <Header />
-      <main className={cssContainer}>
-        {children}
-      </main>
+      <main className={cssContainer}>{children}</main>
       <Footer />
-      <Modal
-        isOpen={isOpen}
-        openHandler={modalHandling}
-      >
+      <Modal isOpen={isOpen} openHandler={modalHandling}>
         {content}
       </Modal>
       <Toast toast={toast} />
@@ -36,10 +32,12 @@ export default function Layout({ children }) {
 
 const cssContainer = css`
   display: flex;
+  justify-content: center;
+  width: 100%;
   max-width: ${globalCss.common.maxWidth};
   margin: auto;
-  padding: 1.875rem 1.5rem;
-  
+  padding: 1.875rem 1.25rem;
+
   @media ${globalCss.breakpoint.tabletQuery} {
     padding: 1.5rem 2rem; //TODO
   }
