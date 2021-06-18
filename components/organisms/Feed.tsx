@@ -73,13 +73,20 @@ const cssList = css`
   display: grid;
   gap: 1.75rem;
   grid-template-columns: 1fr 1fr 1fr;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    gap: 0.125rem;
+  }
 `
 
 const cssPost = css`
-  width: ${globalCss.common.maxWidthImage};
-  height: ${globalCss.common.maxWidthImage};
+  position: relative;
+  width: 100%;
+  max-width: 18.313rem;
+  padding-bottom: 100%;
 
   img {
+    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;

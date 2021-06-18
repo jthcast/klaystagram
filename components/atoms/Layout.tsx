@@ -38,11 +38,7 @@ const cssContainer = css`
   margin: auto;
   padding: 1.875rem 1.25rem;
 
-  @media ${globalCss.breakpoint.tabletQuery} {
-    padding: 1.5rem 2rem; //TODO
-  }
-
   @media ${globalCss.breakpoint.mobileQuery} {
-    padding: 1rem 1.25rem;
+    padding: 1rem 0;
   }
 `

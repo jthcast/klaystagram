@@ -138,6 +138,7 @@ const cssHeader = css`
   width: 100%;
   background-color: ${globalCss.color.white};
   border-bottom: 1px solid ${globalCss.color.borderColor};
+  z-index: 1;
 `
 
 const cssContainer = css`
@@ -146,16 +147,14 @@ const cssContainer = css`
   margin: auto;
   padding: 0.5rem 1.25rem;
 
-  @media ${globalCss.breakpoint.tabletQuery} {
-    padding: 1.5rem 2rem;
-  }
-
   @media ${globalCss.breakpoint.mobileQuery} {
-    padding: 1rem 1.25rem;
+    padding: 0.25rem 1rem;
   }
 `
 
 const cssLogo = css`
+  display: flex;
+  align-items: center;
   margin-right: auto;
 `
 
@@ -172,7 +171,19 @@ const cssMenus = css`
     }
 
     li:not(:last-child) {
-      margin: 0 1rem 0 0;
+      margin-right: 1rem;
+    }
+  }
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    ul {
+      li button {
+        font-size: 1.25rem;
+      }
+
+      li:not(:last-child) {
+        margin-right: 0.5rem;
+      }
     }
   }
 `
