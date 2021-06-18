@@ -1,23 +1,30 @@
+import { css, cx } from '@emotion/css'
+import globalCss from '../../styles/global-css'
+
 interface ILinkNewTab {
   className?: string
   link?: string
   title?: string
 }
 
-export default function LinkNewTab({
-  className,
-  link,
-  title
-}: ILinkNewTab) {
-
+export default function LinkNewTab({ className, link, title }: ILinkNewTab) {
   return (
     <a
-      className={className}
+      className={cx({ [cssAnchor]: true }, { [className]: !!className })}
       href={link}
-      target='_blank'
-      rel='noreferrer noopener'
+      target="_blank"
+      rel="noreferrer noopener"
     >
       {title}
     </a>
   )
 }
+
+const cssAnchor = css`
+  color: ${globalCss.color.color};
+  line-height: 1;
+
+  &:visited {
+    color: ${globalCss.color.color};
+  }
+`

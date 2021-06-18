@@ -1,6 +1,7 @@
 import { css } from '@emotion/css'
 import { useState } from 'react'
 import { KLAYTN_SCOPE } from '../../constants/url'
+import globalCss from '../../styles/global-css'
 import Button from '../atoms/Button'
 import Icon from '../atoms/Icon'
 import LinkNewTab from '../atoms/LinkNewTab'
@@ -29,7 +30,7 @@ export default function CopyrightInfo({
         className={cssCopyrightInfoButton}
         title="Copyright Info"
         onClick={toogleShowInfo}
-        ghost={true}
+        ghost
       >
         <Icon iconName="copyright" />
       </Button>
@@ -38,11 +39,13 @@ export default function CopyrightInfo({
           <>
             <p>Original Owner</p>
             <LinkNewTab
+              className={cssLink}
               link={`${KLAYTN_SCOPE}account/${originalOwner}`}
               title={originalOwner}
             />
             <p>Current Owner</p>
             <LinkNewTab
+              className={cssLink}
               link={`${KLAYTN_SCOPE}account/${currentOwner}`}
               title={currentOwner}
             />
@@ -55,4 +58,12 @@ export default function CopyrightInfo({
 
 const cssCopyrightInfoButton = css`
   font-size: 1.5rem;
+`
+
+const cssLink = css`
+  color: ${globalCss.color.colorDown};
+
+  &:visited {
+    color: ${globalCss.color.colorDown};
+  }
 `

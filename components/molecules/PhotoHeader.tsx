@@ -8,11 +8,7 @@ interface IPhotoHeader {
   location?: string
 }
 
-export default function PhotoHeader({
-  currentOwner,
-  location
-}: IPhotoHeader) {
-
+export default function PhotoHeader({ currentOwner, location }: IPhotoHeader) {
   return (
     <header className={cssContainer}>
       <LinkNewTab
@@ -20,9 +16,7 @@ export default function PhotoHeader({
         link={`${KLAYTN_SCOPE}account/${currentOwner}`}
         title={currentOwner}
       />
-      <p className={cssLoation}>
-        {location}
-      </p>
+      <p className={cssLoation}>{location}</p>
     </header>
   )
 }
@@ -40,6 +34,11 @@ const cssCurrentOwner = css`
   white-space: nowrap;
   overflow: hidden;
   display: block;
+  margin-bottom: 0.125rem;
+
+  &:visited {
+    color: ${globalCss.color.color};
+  }
 `
 
 const cssLoation = css`

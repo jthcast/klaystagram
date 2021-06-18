@@ -78,7 +78,7 @@ const cssInfoContainer = css`
 const cssButtonsContainer = css`
   display: flex;
   border-left: 1px solid ${globalCss.color.borderColor};
-  padding: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 
   button:not(:last-child) {
     margin-right: 0.5rem;

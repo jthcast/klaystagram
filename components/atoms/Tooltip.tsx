@@ -27,8 +27,4 @@ const cssTooltip = css`
   header {
     font-size: 1.25rem;
   }
-
-  a {
-    color: ${globalCss.color.colorDown};
-  }
 `

@@ -79,11 +79,6 @@ const cssModal = (isOpen: boolean) => css`
   transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   height: 100%;
   overflow-y: auto;
-
-  a {
-    color: ${globalCss.color.color};
-    border-bottom: none;
-  }
 `
 
 const cssBackdrop = css`
