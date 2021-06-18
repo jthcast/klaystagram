@@ -15,11 +15,11 @@ interface ICopyrightInfo {
 export default function CopyrightInfo({
   id,
   originalOwner,
-  currentOwner
+  currentOwner,
 }: ICopyrightInfo) {
   const [isShowInfo, setShowInfo] = useState(false)
 
-  function toogleShowInfo(){
+  function toogleShowInfo() {
     setShowInfo(!isShowInfo)
   }
 
@@ -27,31 +27,25 @@ export default function CopyrightInfo({
     <>
       <Button
         className={cssCopyrightInfoButton}
-        title='Copyright Info'
+        title="Copyright Info"
         onClick={toogleShowInfo}
         ghost={true}
       >
-        <Icon iconName='copyright' />
+        <Icon iconName="copyright" />
       </Button>
       {isShowInfo && (
-        <Tooltip
-          title={id}
-        >
+        <Tooltip title={id}>
           <>
-            <p>
-              Original Owner
-              <LinkNewTab
-                link={`${KLAYTN_SCOPE}transactions?account=${originalOwner}`}
-                title={originalOwner}
-              />
-            </p>
-            <p>
-              Current Owner
-              <LinkNewTab
-                link={`${KLAYTN_SCOPE}transactions?account=${currentOwner}`}
-                title={currentOwner}
-              />
-            </p>
+            <p>Original Owner</p>
+            <LinkNewTab
+              link={`${KLAYTN_SCOPE}account/${originalOwner}`}
+              title={originalOwner}
+            />
+            <p>Current Owner</p>
+            <LinkNewTab
+              link={`${KLAYTN_SCOPE}account/${currentOwner}`}
+              title={currentOwner}
+            />
           </>
         </Tooltip>
       )}
