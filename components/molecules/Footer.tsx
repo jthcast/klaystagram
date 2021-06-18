@@ -34,6 +34,7 @@ const cssFooter = css`
   width: 100%;
   max-width: ${globalCss.common.maxWidth};
   margin: auto;
+  padding: 0 0 3.25rem 0;
 `
 
 const cssList = css`
