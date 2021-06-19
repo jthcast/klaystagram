@@ -7,6 +7,7 @@ import Modal from './Modal'
 import Footer from '../molecules/Footer'
 import { css } from '@emotion/css'
 import globalCss from '../../styles/global-css'
+import Head from 'next/head'
 
 export default function Layout({ children }) {
   const { isOpen = false, content } =
@@ -19,6 +20,15 @@ export default function Layout({ children }) {
 
   return (
     <>
+      <Head>
+        <title>Klaystagram</title>
+        <link
+          href="/favicon.svg"
+          rel="icon"
+          type="image/svg+xml"
+          sizes="16x16"
+        ></link>
+      </Head>
       <Header />
       <main className={cssContainer}>{children}</main>
       <Footer />
