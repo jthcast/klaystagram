@@ -75,13 +75,17 @@ export default function Header() {
             {!isLoggedIn && (
               <>
                 <li>
-                  <Button onClick={showLoginModal} title="Login">
+                  <Button
+                    className={cssLoginButton}
+                    onClick={showLoginModal}
+                    title="Login"
+                  >
                     Login
                   </Button>
                 </li>
                 <li>
                   <Button
-                    className={cssSecondaryButton}
+                    className={cssSignupButton}
                     onClick={showSignupModal}
                     ghost
                     title="Sign Up"
@@ -144,6 +148,7 @@ const cssHeader = css`
 const cssContainer = css`
   display: flex;
   max-width: ${globalCss.common.maxWidth};
+  height: 3.3rem;
   margin: auto;
   padding: 0.5rem 1.25rem;
 
@@ -164,6 +169,7 @@ const cssMenus = css`
 
   ul {
     display: flex;
+    align-items: center;
     list-style: none;
 
     li button {
@@ -177,10 +183,6 @@ const cssMenus = css`
 
   @media ${globalCss.breakpoint.mobileQuery} {
     ul {
-      li button {
-        font-size: 1.25rem;
-      }
-
       li:not(:last-child) {
         margin-right: 0.5rem;
       }
@@ -188,12 +190,22 @@ const cssMenus = css`
   }
 `
 
-const cssSecondaryButton = css`
+const cssLoginButton = css`
+  padding: 0.313rem 0.563rem;
+  font-size: 0.875rem;
+`
+
+const cssSignupButton = css`
   border: 0;
   padding: 0.25rem 0;
-  color: ${globalCss.color.secondaryBrandColor};
+  font-size: 0.875rem;
+  color: ${globalCss.color.primaryBrandColor};
 `
 
 const cssGhostButton = css`
   font-size: 1.5rem;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    font-size: 1.25rem;
+  }
 `
