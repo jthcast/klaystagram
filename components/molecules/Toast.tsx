@@ -49,11 +49,19 @@ const cssToast = css`
   top: 2rem;
   right: 2rem;
   width: 20rem;
+  max-width: 90vw;
   background-color: ${globalCss.color.backgroundColor};
   box-shadow: 0 0 5px 1px ${globalCss.color.borderColor};
   border-radius: 0.25rem;
   padding: 0.75rem;
   z-index: 3;
+  overflow-wrap: break-word;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    top: 3.5rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 `
 
 const cssStatus = (status: string) => css`
