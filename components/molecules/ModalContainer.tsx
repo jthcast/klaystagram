@@ -27,7 +27,8 @@ const cssModalContainer = css`
   max-width: 80vw;
 
   @media ${globalCss.breakpoint.mobileQuery} {
-    padding: 1rem 1.5rem;
+    min-width: auto;
+    max-width: 93vw;
   }
 `
 
@@ -47,6 +48,6 @@ const cssChildrenContainer = css`
   padding: 2rem;
 
   @media ${globalCss.breakpoint.mobileQuery} {
-    margin-top: 1rem;
+    padding: 1.25rem;
   }
 `
