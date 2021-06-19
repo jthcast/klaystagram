@@ -1,16 +1,23 @@
-import { css } from '@emotion/css'
+import { css, cx } from '@emotion/css'
 import { KLAYTN_SCOPE } from '../../constants/url'
 import globalCss from '../../styles/global-css'
 import LinkNewTab from '../atoms/LinkNewTab'
 
 interface IPhotoHeader {
+  className?: string
   currentOwner: string
   location?: string
 }
 
-export default function PhotoHeader({ currentOwner, location }: IPhotoHeader) {
+export default function PhotoHeader({
+  className,
+  currentOwner,
+  location,
+}: IPhotoHeader) {
   return (
-    <header className={cssContainer}>
+    <header
+      className={cx({ [cssContainer]: true }, { [className]: !!className })}
+    >
       <LinkNewTab
         className={cssCurrentOwner}
         link={`${KLAYTN_SCOPE}account/${currentOwner}`}
@@ -22,8 +29,6 @@ export default function PhotoHeader({ currentOwner, location }: IPhotoHeader) {
 }
 
 const cssContainer = css`
-  border-left: 1px solid ${globalCss.color.borderColor};
-  border-bottom: 1px solid ${globalCss.color.borderColor};
   padding: 1rem;
 `
 

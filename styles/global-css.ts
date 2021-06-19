@@ -13,15 +13,13 @@ export function rem(size: number) {
 
 const globalCss = {
   breakpoint: {
-    mobile: breakPointMobile,
+    foldQuery: `(max-width: ${breakPointMobile})`,
     mobileQuery: `(max-width: ${breakPointTablet})`,
-    tablet: breakPointTablet,
     tabletQuery: `(min-width: ${breakPointTablet}) and (max-width: ${breakPointDesktop})`,
     desktop: breakPointDesktop,
   },
   common: {
     maxWidth: `60.938rem`,
-    maxWidthWithoutPadding: `58.438rem`,
     maxWidthHeader: `100%`,
     fontBold: `600`,
     fontNormal: `400`,

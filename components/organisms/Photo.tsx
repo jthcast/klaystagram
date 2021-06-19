@@ -27,10 +27,15 @@ export default function Photo({ id, src }: IPhoto) {
 
   return (
     <div className={cssContainer}>
-      <img className={cssImage} src={src} alt={name} />
       <div className={cssInfoContainer}>
-        <PhotoHeader currentOwner={currentOwner} location={location} />
+        <PhotoHeader
+          className={cssPhotoHeader}
+          currentOwner={currentOwner}
+          location={location}
+        />
+        <img className={cssImage} src={src} alt={name} />
         <PhotoInfo
+          className={cssPhotoInfo}
           name={name}
           issueDate={issueDateDistanceToNow}
           caption={caption}
@@ -57,31 +62,80 @@ export default function Photo({ id, src }: IPhoto) {
 
 const cssContainer = css`
   width: 100%;
-  max-width: ${globalCss.common.maxWidthWithoutPadding};
-  max-height: 85vh;
-  display: flex;
-  background-color: ${globalCss.color.backgroundColor};
+  max-width: ${globalCss.common.maxWidth};
+  padding: 0 1.25rem;
   margin: auto;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    padding: 0 2.5rem;
+    background-color: ${globalCss.color.white};
+  }
+  @media ${globalCss.breakpoint.foldQuery} {
+    padding: 0;
+  }
+`
+
+const cssInfoContainer = css`
+  display: grid;
+  grid-template-columns: auto 20.938rem;
+  grid-template-rows: auto 1fr auto auto;
+  background-color: ${globalCss.color.backgroundColor};
+  width: 100%;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    grid-template-columns: 100%;
+  }
+`
+
+const cssPhotoHeader = css`
+  border-left: 1px solid ${globalCss.color.borderColor};
+  border-bottom: 1px solid ${globalCss.color.borderColor};
+  grid-column: 2/3;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    border: 0;
+    grid-column: auto;
+  }
 `
 
 const cssImage = css`
   width: 100%;
+  height: 100%;
   max-width: 37.5rem;
+  max-height: 85vw;
+  object-fit: cover;
+  grid-column: 1/2;
+  grid-row: 1/5;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    grid-column: auto;
+    grid-row: auto;
+  }
 `
 
-const cssInfoContainer = css`
-  display: flex;
-  flex-direction: column;
-  width: 20.938rem;
+const cssPhotoInfo = css`
+  border-left: 1px solid ${globalCss.color.borderColor};
+  border-bottom: 1px solid ${globalCss.color.borderColor};
+  grid-column: 2/3;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    display: none;
+  }
 `
 
 const cssButtonsContainer = css`
   display: flex;
   border-left: 1px solid ${globalCss.color.borderColor};
   padding: 0.5rem 1rem 0.5rem 1rem;
+  grid-column: 2/3;
 
   button:not(:last-child) {
     margin-right: 0.5rem;
+  }
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    border: 0;
+    grid-column: auto;
   }
 `
 
@@ -90,4 +144,10 @@ const cssIssueDateContainer = css`
   border-left: 1px solid ${globalCss.color.borderColor};
   padding: 0 1rem 1rem 1rem;
   font-size: 0.75rem;
+  grid-column: 2/3;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    border: 0;
+    grid-column: auto;
+  }
 `
