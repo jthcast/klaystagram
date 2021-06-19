@@ -23,6 +23,11 @@ const cssKlaytnContainer = css`
   background-color: ${globalCss.color.backgroundColor};
   padding: 2rem 3rem;
   margin: auto;
+  max-width: 80vw;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    padding: 1rem 1.5rem;
+  }
 `
 
 const cssContainer = css`
@@ -36,14 +41,31 @@ const cssLogo = css`
   h1 {
     font-size: 2.5rem;
   }
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    font-size: 1.4rem;
+
+    h1 {
+      font-size: 1.25rem;
+    }
+  }
 `
 
 const cssSubtitle = css`
   font-size: 1.25rem;
+  text-align: center;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    font-size: 1rem;
+  }
 `
 
 const cssChildrenContainer = css`
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    margin-top: 1rem;
+  }
 `
