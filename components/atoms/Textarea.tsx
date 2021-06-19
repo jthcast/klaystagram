@@ -41,7 +41,7 @@ const cssLabel = css`
 
   &:focus-within {
     outline: auto;
-    color: ${globalCss.color.secondaryBrandColor};
+    color: ${globalCss.color.primaryBrandColor};
   }
 `
 

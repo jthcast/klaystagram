@@ -67,7 +67,7 @@ const cssLabel = css`
   position: relative;
 
   &:focus-within {
-    color: ${globalCss.color.secondaryBrandColor};
+    color: ${globalCss.color.primaryBrandColor};
   }
 `
 
@@ -101,7 +101,7 @@ const cssInput = css`
   }
 
   &:focus {
-    outline-color: ${globalCss.color.secondaryBrandColor};
+    outline-color: ${globalCss.color.primaryBrandColor};
   }
 
   &::placeholder {

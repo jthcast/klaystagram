@@ -72,7 +72,7 @@ const cssButton = css`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: ${globalCss.color.secondaryBrandColor};
+  background-color: ${globalCss.color.primaryBrandColor};
   border: none;
   color: ${globalCss.color.white};
   padding: 0.25rem 0.75rem;

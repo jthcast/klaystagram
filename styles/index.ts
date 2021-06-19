@@ -49,7 +49,7 @@ body {
   --color-base-reverse: #FFFFFF;
   --color-down: #70757a;
   --color-code-base: #9a354a;
-  --primary-brand-base: #f6a54c;
+  --primary-brand-base: #0095f6;
   --secondary-brand-base: #614cf6;
   --secondary-brand-base-opacity: rgba(110, 89, 255, 0.4);
   --primary-brand-background-base: #504646;
