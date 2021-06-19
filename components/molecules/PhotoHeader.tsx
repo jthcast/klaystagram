@@ -40,6 +40,7 @@ const cssCurrentOwner = css`
   overflow: hidden;
   display: block;
   margin-bottom: 0.125rem;
+  color: ${globalCss.color.color};
 
   &:visited {
     color: ${globalCss.color.color};
