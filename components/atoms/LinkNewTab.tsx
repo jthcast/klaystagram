@@ -21,10 +21,10 @@ export default function LinkNewTab({ className, link, title }: ILinkNewTab) {
 }
 
 const cssAnchor = css`
-  color: ${globalCss.color.color};
+  color: #00376b;
   line-height: 1;
 
   &:visited {
-    color: ${globalCss.color.color};
+    color: #00376b;
   }
 `
