@@ -3,6 +3,7 @@ import { RootState } from '../../redux/modules'
 import { logout } from '../../redux/modules/auth'
 import ui from '../../utils/ui'
 import KlaytnContainer from '../molecules/KlaytnContainer'
+import ModalContainer from '../molecules/ModalContainer'
 import Button from '../atoms/Button'
 import Icon from '../atoms/Icon'
 import WalletInfo from '../molecules/WalletInfo'
@@ -40,9 +41,9 @@ export default function Header() {
   function showWalletModal() {
     ui.showModal({
       content: (
-        <KlaytnContainer>
+        <ModalContainer title="Wallet Info">
           <WalletInfo />
-        </KlaytnContainer>
+        </ModalContainer>
       ),
     })
   }
@@ -50,9 +51,9 @@ export default function Header() {
   function showUploadModal() {
     ui.showModal({
       content: (
-        <KlaytnContainer>
+        <ModalContainer title="Upload Photo">
           <UploadPhotoForm />
-        </KlaytnContainer>
+        </ModalContainer>
       ),
     })
   }

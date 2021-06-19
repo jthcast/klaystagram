@@ -2,7 +2,7 @@ import { css } from '@emotion/css'
 import ui from '../../utils/ui'
 import Button from '../atoms/Button'
 import Icon from '../atoms/Icon'
-import KlaytnContainer from './KlaytnContainer'
+import ModalContainer from '../molecules/ModalContainer'
 import TransferOwnership from './TransferOwnership'
 
 interface ITransferOwnershipButton {
@@ -19,13 +19,13 @@ export default function TransferOwnershipButton({
   function showModalHandling() {
     ui.showModal({
       content: (
-        <KlaytnContainer>
+        <ModalContainer title="Transfer Ownership">
           <TransferOwnership
             id={id}
             issueDate={issueDate}
             currentOwner={currentOwner}
           />
-        </KlaytnContainer>
+        </ModalContainer>
       ),
     })
   }
