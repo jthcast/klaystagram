@@ -63,6 +63,10 @@ export default function TransferOwnership({
 
 const cssContainer = css`
   width: 100%;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    min-width: 80vw;
+  }
 `
 
 const cssInfoContainer = css`
