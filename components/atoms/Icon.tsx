@@ -138,7 +138,7 @@ export default function Icon({
       className={cx(
         { [cssIcon]: true },
         { [cssSpin]: spin },
-        { [className]: className !== '' }
+        { [className]: !!className }
       )}
       style={style}
       width="1em"
