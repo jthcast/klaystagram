@@ -11,12 +11,13 @@ export default function Tooltip({ children, className, title }: ITooltip) {
   return (
     <div className={cx({ [cssTooltip]: true }, { [className]: !!className })}>
       <header>{title}</header>
-      <div>{children}</div>
+      <div className={cssChildren}>{children}</div>
     </div>
   )
 }
 
 const cssTooltip = css`
+  max-width: 90vw;
   position: absolute;
   color: ${globalCss.color.colorReverse};
   background-color: ${globalCss.color.backgroundColorReverseOpacity};
@@ -27,4 +28,12 @@ const cssTooltip = css`
   header {
     font-size: 1.25rem;
   }
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    left: 50%;
+  }
+`
+
+const cssChildren = css`
+  overflow-wrap: break-word;
 `
