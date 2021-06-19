@@ -63,6 +63,7 @@ export default function Photo({ id, src }: IPhoto) {
 const cssContainer = css`
   width: 100%;
   max-width: ${globalCss.common.maxWidth};
+  max-height: 85vh;
   padding: 0 1.25rem;
   margin: auto;
 
@@ -79,8 +80,9 @@ const cssInfoContainer = css`
   display: grid;
   grid-template-columns: auto 20.938rem;
   grid-template-rows: auto 1fr auto auto;
-  background-color: ${globalCss.color.backgroundColor};
   width: 100%;
+  height: 100%;
+  background-color: ${globalCss.color.backgroundColor};
 
   @media ${globalCss.breakpoint.mobileQuery} {
     grid-template-columns: 100%;
