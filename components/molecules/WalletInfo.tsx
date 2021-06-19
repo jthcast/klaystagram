@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { KLAY_FAUCET } from '../../constants/url'
 import caver from '../../klaytn/caver'
 import { RootState } from '../../redux/modules'
+import globalCss from '../../styles/global-css'
 import Input from '../atoms/Input'
 import LinkNewTab from '../atoms/LinkNewTab'
 
@@ -42,6 +43,10 @@ const cssContainer = css`
   width: 100%;
   display: grid;
   gap: 1rem;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    min-width: 80vw;
+  }
 `
 
 const cssMessage = css`

@@ -2,6 +2,7 @@ import { css } from '@emotion/css'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { uploadPhoto } from '../../redux/modules/photos'
+import globalCss from '../../styles/global-css'
 import imageCompression from '../../utils/imageCompression'
 import ui from '../../utils/ui'
 import Button from '../atoms/Button'
@@ -99,6 +100,10 @@ const cssContainer = css`
   width: 100%;
   display: grid;
   gap: 1rem;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    min-width: 80vw;
+  }
 `
 
 const cssButton = css`
