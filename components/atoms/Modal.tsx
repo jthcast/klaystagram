@@ -52,16 +52,10 @@ const Modal = ({
   }, [keyDownHandling])
 
   return (
-    <>
-      <div className={cssModal(isOpen)} role="dialog" aria-modal="true">
-        {children}
-        <div
-          role="presentation"
-          onClick={openHandling}
-          className={cssBackdrop}
-        />
-      </div>
-    </>
+    <div className={cssModal(isOpen)} role="dialog" aria-modal="true">
+      {children}
+      <div role="presentation" onClick={openHandling} className={cssBackdrop} />
+    </div>
   )
 }
 
