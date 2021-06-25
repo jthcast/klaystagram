@@ -40,9 +40,6 @@ export default function Feed() {
   return (
     <div className={cssContainer}>
       {isLoading && <Icon iconName="spinner" spin />}
-      {!isLoading && feed && !feed.length && (
-        <span>No Photo yet. How about uploading it? 😅</span>
-      )}
       {!isLoading && chainId && (
         <>
           <header className={cssChainInfoWrapper}>
@@ -75,7 +72,13 @@ export default function Feed() {
           </div>
         </>
       )}
-      {feed?.length && (
+      {!isLoading && feed && !feed.length && (
+        <span>
+          No Photo yet.
+          <br /> How about uploading it? 😅
+        </span>
+      )}
+      {feed?.length > 0 && (
         <ul className={cssList}>
           {feed.map(({ id, name, data }) => {
             const imageUrl = drawImageFromBytes(data)

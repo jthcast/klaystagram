@@ -51,7 +51,8 @@ export const getFeed = () => async (dispatch) => {
     .getTotalPhotoCount()
     .call()
   if (!totalPhotoCount) {
-    return []
+    setFeed([])
+    dispatch(endLoading())
   }
 
   const feed = []
