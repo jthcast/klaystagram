@@ -46,24 +46,13 @@ export default function Feed() {
             <div className={cssChainImage}>
               <Icon iconName="klaytnLogo" />
             </div>
-            <section className={cssChainInfo}>
-              <div className={cssChainId}>{chainId}</div>
-              <div className={cssDetailInfoForPC}>
-                <div>
-                  <span className={cssPostsNumber}>{feed.length} </span>
-                  <span>posts</span>
-                </div>
-                <div>{description}</div>
-              </div>
-            </section>
-          </header>
-          <div className={cssDetailInfoMobileWrapper}>
-            <div className={cssDescriptionMobile}>{description}</div>
-            <div className={cssDetailInfoMobile}>
-              <span className={cssPostsNumber}>{feed.length}</span>
+            <div className={cssChainId}>{chainId}</div>
+            <div className={cssChainInfo}>
+              <span className={cssPostsNumber}>{feed.length} </span>
               <span>posts</span>
             </div>
-          </div>
+            <div className={cssChainDescription}>{description}</div>
+          </header>
           <div className={cssInfoSeparator}>
             <div className={cssSelectedInfo}>
               <Icon iconName="grid" />
@@ -113,81 +102,76 @@ const cssContainer = css`
 `
 
 const cssChainInfoWrapper = css`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   width: 100%;
   margin-bottom: 2.75rem;
+  line-height: 1;
 
   @media ${globalCss.breakpoint.mobileQuery} {
-    padding: 1rem;
     margin: 0;
   }
 `
 
 const cssChainImage = css`
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
   margin-right: 1.875rem;
   padding: 0 5rem;
   font-size: 8rem;
   line-height: 0;
 
   @media ${globalCss.breakpoint.mobileQuery} {
+    grid-row: 1 / 3;
+    padding: 1rem 0 0 1rem;
     font-size: 5rem;
-    padding: 0;
-  }
-`
-
-const cssChainInfo = css`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  line-height: 1;
-
-  div:not(:last-child) {
-    margin-bottom: 1.25rem;
   }
 `
 
 const cssChainId = css`
+  margin-bottom: 1.25rem;
   font-size: 1.75rem;
-`
 
-const cssDetailInfoForPC = css`
   @media ${globalCss.breakpoint.mobileQuery} {
-    display: none;
+    grid-row: 1 / 2;
+    padding: 1rem 1rem 0 0;
   }
 `
 
-const cssDetailInfoMobileWrapper = css`
-  display: none;
+const cssChainInfo = css`
+  margin-bottom: 1.25rem;
 
   @media ${globalCss.breakpoint.mobileQuery} {
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
+    border-top: 1px solid ${globalCss.color.borderColor};
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    padding: 0.75rem 0;
+    color: ${globalCss.color.colorDown};
+    line-height: 1.4;
+    margin-bottom: 0;
     font-size: 0.875rem;
   }
-`
-
-const cssDescriptionMobile = css`
-  width: 100%;
-  padding: 0 1rem 1.313rem;
-`
-
-const cssDetailInfoMobile = css`
-  width: 100%;
-  border-top: 1px solid ${globalCss.color.borderColor};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.75rem 0;
-  color: ${globalCss.color.colorDown};
-  line-height: 1.4;
 `
 
 const cssPostsNumber = css`
   color: ${globalCss.color.color};
   font-weight: bold;
+`
+
+const cssChainDescription = css`
+  margin-bottom: 1.25rem;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    grid-column: 1 / 3;
+    padding: 1rem 1rem 1.313rem;
+    font-size: 0.875rem;
+    line-height: normal;
+    margin-bottom: 0;
+  }
 `
 
 const cssInfoSeparator = css`
