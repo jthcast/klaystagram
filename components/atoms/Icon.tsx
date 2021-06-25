@@ -113,6 +113,14 @@ const icons: IconDetailProps = {
       },
     ],
   },
+  grid: {
+    viewBox: `0 0 64 64`,
+    paths: [
+      {
+        d: `M0 6a6 6 0 016-6h52a6 6 0 016 6v52a6 6 0 01-6 6H6a6 6 0 01-6-6V6zm6-2a2 2 0 00-2 2v14h16V4H6zm14 20H4v16h16V24zm4 16h16V24H24v16zm-4 4H4v14a2 2 0 002 2h14V44zm4 0v16h16V44H24zm20 0v16h14a2 2 0 002-2V44H44zm0-4h16V24H44v16zm0-20h16V6a2 2 0 00-2-2H44v16zm-4 0V4H24v16h16z`,
+      },
+    ],
+  },
 }
 
 function getRotateDegree(viewBox: string) {
