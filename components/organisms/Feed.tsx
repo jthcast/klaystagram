@@ -53,7 +53,7 @@ export default function Feed() {
               <div className={cssChainId}>{chainId}</div>
               <div className={cssDetailInfoForPC}>
                 <div>
-                  <span className={cssPostsNumber}>{feed.length}</span>
+                  <span className={cssPostsNumber}>{feed.length} </span>
                   <span>posts</span>
                 </div>
                 <div>{description}</div>
