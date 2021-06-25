@@ -48,17 +48,30 @@ export default function Feed() {
             <div className={cssChainImage}>
               <Icon iconName="klaytnLogo" />
             </div>
-            <div className={cssChainInfo}>
+            <section className={cssChainInfo}>
               <div className={cssChainId}>{chainId}</div>
-              <div>
-                <span className={cssPostsNumber}>{feed.length}</span> posts
+              <div className={cssDetailInfoForPC}>
+                <div>
+                  <span className={cssPostsNumber}>{feed.length}</span>
+                  <span>posts</span>
+                </div>
+                <div>Klaytn-based NFT photo licensing application 📸</div>
               </div>
-              <div>Klaytn-based NFT photo licensing application 📸</div>
-            </div>
+            </section>
           </header>
+          <div className={cssDetailInfoMobileWrapper}>
+            <div className={cssDescriptionMobile}>
+              Klaytn-based NFT photo licensing application 📸
+            </div>
+            <div className={cssDetailInfoMobile}>
+              <span className={cssPostsNumber}>{feed.length}</span>
+              <span>posts</span>
+            </div>
+          </div>
           <div className={cssInfoSeparator}>
             <div className={cssSelectedInfo}>
-              <Icon iconName="grid" /> POSTS
+              <Icon iconName="grid" />
+              <span>posts</span>
             </div>
           </div>
         </>
@@ -103,8 +116,8 @@ const cssChainInfoWrapper = css`
   margin-bottom: 2.75rem;
 
   @media ${globalCss.breakpoint.mobileQuery} {
-    width: auto;
-    margin: 1rem;
+    padding: 1rem;
+    margin: 0;
   }
 `
 
@@ -113,6 +126,11 @@ const cssChainImage = css`
   padding: 0 5rem;
   font-size: 8rem;
   line-height: 0;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    font-size: 5rem;
+    padding: 0;
+  }
 `
 
 const cssChainInfo = css`
@@ -130,7 +148,43 @@ const cssChainId = css`
   font-size: 1.75rem;
 `
 
+const cssDetailInfoForPC = css`
+  @media ${globalCss.breakpoint.mobileQuery} {
+    display: none;
+  }
+`
+
+const cssDetailInfoMobileWrapper = css`
+  display: none;
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 0.875rem;
+  }
+`
+
+const cssDescriptionMobile = css`
+  width: 100%;
+  padding: 0 1rem 1.313rem;
+`
+
+const cssDetailInfoMobile = css`
+  width: 100%;
+  border-top: 1px solid ${globalCss.color.borderColor};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0;
+  color: ${globalCss.color.colorDown};
+  line-height: 1.4;
+`
+
 const cssPostsNumber = css`
+  color: ${globalCss.color.color};
   font-weight: bold;
 `
 
@@ -161,6 +215,19 @@ const cssInfoSeparator = css`
 const cssSelectedInfo = css`
   margin-top: -1px;
   border-top: 1px solid ${globalCss.color.color};
+
+  @media ${globalCss.breakpoint.mobileQuery} {
+    border-top: 0;
+
+    svg {
+      font-size: 1.5rem;
+      fill: ${globalCss.color.primaryBrandColor};
+    }
+
+    span {
+      display: none;
+    }
+  }
 `
 
 const cssList = css`
