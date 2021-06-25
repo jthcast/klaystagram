@@ -15,6 +15,7 @@ export default function Feed() {
   const isLoading = useSelector((state: RootState) => state.loading.isLoading)
   const feed = useSelector((state: RootState) => state.photos.feed)
   const [chainId, setChainId] = useState(undefined)
+  const description = `Klaytn-based NFT photo licensing application 📸`
 
   function showDetailModal(event: React.MouseEvent<HTMLImageElement>) {
     const { id, src } = event.currentTarget.dataset
@@ -55,14 +56,12 @@ export default function Feed() {
                   <span className={cssPostsNumber}>{feed.length}</span>
                   <span>posts</span>
                 </div>
-                <div>Klaytn-based NFT photo licensing application 📸</div>
+                <div>{description}</div>
               </div>
             </section>
           </header>
           <div className={cssDetailInfoMobileWrapper}>
-            <div className={cssDescriptionMobile}>
-              Klaytn-based NFT photo licensing application 📸
-            </div>
+            <div className={cssDescriptionMobile}>{description}</div>
             <div className={cssDetailInfoMobile}>
               <span className={cssPostsNumber}>{feed.length}</span>
               <span>posts</span>
