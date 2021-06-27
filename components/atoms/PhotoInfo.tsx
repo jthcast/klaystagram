@@ -27,6 +27,7 @@ const cssContainer = css`
   padding: 1rem;
   height: 100%;
   overflow: auto;
+  overflow-wrap: break-word;
 `
 
 const cssFileName = css`
